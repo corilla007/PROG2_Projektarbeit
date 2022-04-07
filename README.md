@@ -12,7 +12,7 @@ Plotly (plotly.express as px)
 Pandas
 
 <h2>4. Workflow</h2>
-![](images/Flowchart_Projekt_PROG2.png)
+![Workflow](images/Flowchart_Projekt_PROG2.png)
 
 <h2>5. Architektur</h2>
 <h3>5.1 Home</h3>
