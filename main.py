@@ -6,10 +6,6 @@ import random
 from datetime import datetime
 
 
-from rechnen.steuern import berechnen
-from rechnen.steuern import abgaben
-
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -95,7 +91,7 @@ def egal_was():
 
 @app.route("/demo_euro")
 def egal_was_2():
-    return f"{abgaben(400)} EUR
+    return f"{abgaben(400)} EUR"
 
 
 @app.route("/datum")
