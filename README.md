@@ -9,7 +9,6 @@ Die Webapplikation soll mir die Planung der jeweiligen Lernsessions pro Fach und
 <h2>3. Betrieb</h2>
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:Flask (Flask, render_template, request, redirect, url_for)
 Plotly (plotly.express as px)
-Pandas
 
 <h2>4. Workflow</h2>
 ![](../Flowchart_Projekt_PROG2.png)

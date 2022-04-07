@@ -95,7 +95,7 @@ def egal_was():
 
 @app.route("/demo_euro")
 def egal_was_2():
-    return f"{abgaben(400)} EUR"
+    return f"{abgaben(400)} EUR
 
 
 @app.route("/datum")
