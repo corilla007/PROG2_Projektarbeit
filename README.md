@@ -15,15 +15,15 @@ Pandas
 ![Workflow](images/Flowchart_Projekt_PROG2.png)
 
 <h2>5. Architektur</h2>
-<h3>5.1 Home</h3>
-Durch das Anwählen des jeweiligen Buttons gelangt der User auf die Seiten Dein Studium, Lernsessions erfassen, Abfrage, Übersicht.
-<h3>5.2 Dein Studium</h3>
+
+<h3>5.1 Fächer erfassen</h3>
 Der User muss zu Beginn folgende Daten eingeben, welche dann beim Erfassen einer Lernsession hineingezogen werden: 
 Was studierst du? (Text)
 In welchem Semester befindest du dich? (Zahl)
 Welche Fächer hast du in diesem Semester zu absolvieren? (Text)
 Button Speichern
-<h3>5.3 Lernsession erfassen</h3>
+
+<h3>5.2 Lernsession erfassen</h3>
 Der User kann eine neue Lernsession erfassen. Folgende Daten müssen eingegeben werden:
 Welches Fach hast du gelernt? (Auswahl durch vorherig definierte Fächer)
 Welches Thema hast du gelernt?
@@ -31,23 +31,27 @@ WIe lange hast du gelernt (in min)?
 Wie gut beherrst du den Lernstoff..Sei ehrlich! (Auswahl)
 Die Eingabe wird mit dem Klick auf den Button "Speichern" gespeichert. Ausserdem kann noch eine weitere Lernsession mit dem Button "Weitere Lernsession erfassen" erfasst werden.
 Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
-Das Feld für die Stundenangabe benötigt eine Zahleneingabe. Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. Andernfalls erscheint eine Fehlermeldung.
-<h3>5.4 Abfrage</h3>
+Das Feld für die Minutenangaben benötigt eine Zahleneingabe. Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. Andernfalls erscheint eine Fehlermeldung.
+
+<h3>5.3 Abfrage Vorschläge</h3>
 Der User kann eine Abfrage starten. Folgende Daten müssen eingegeben werden:
 Fach (Auswahl)
 Beherrschungsgrad (Auswahl)
-Zeit (Zahl, welche mit weniger oder mehr als "Zahl" ausgewählt werden kann)
 Wird der Button "Vorschläge für eine Lernsessions" angewählt, werden die Angaben des Users mit den Einträgen in der Datenbank verglichen
 Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
-Die Felder welche eine Zahl benötigen, müssen einen Wert grösser gleich 1 haben, andernfalls erscheint eine Fehlermeldung
 Gibt es keine passende Lernsession, kann der User die Abfrage erneut starten
-Gibt es einen passenden Vorschlag, wird dieser Angezeigt.
-<h3>5.5 Übersicht</h3>
-Die gespeicherten Lernsessions werden auf der Seite Übersicht ausgegeben. Die Seite ist nach Thema und Fach geclustert.
-Für die Übersicht kann noch folgende Analyse gestartet werden:
+Gibt es einen passenden Vorschlag, wird dieser angezeigt.
+Mit dem Klick auf den Button "Vorschlag speichern" wird man automatisch zur Übersicht weitergeleitet.
+
+<h3>5.4 Übersicht</h3>
+Die gespeicherten Lernsessions werden im oberen Teil der Seite Übersicht unter "To-Do" ausgegeben. Wird eine Lernsession unter To-Do abgearbeitet, kann der Punkt angeklickt werden und verschwindet anschliessend aus der Liste. 
+Die abgearbeiteten Lernsession werden in einem Container zusammegezählt.
+Unterhalb der Seite kann eine Analyse gestartet werden.
+Folgende Gebiete können über den gesamten Container abgefragt werden: 
 Dieses Fach/Thema wurde am häufigsten gelernt.
 Dieses Fach/Thema beherrschst du am besten.
 Was solltest du dir nochmals ansehen.
+
 <h2>6. Funktionen</h2>
 Dateneingabe: neue Lernsession erfassen, Abfrage für Lernsession
 Datenspeicherung: mögliche Lernsessions und durchgeführte Lernsessions werden in JSON-Datei gespeichert
