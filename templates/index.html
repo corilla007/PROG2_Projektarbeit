@@ -1,15 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='my_style.css') }}">
-</head>
+{% include "navigation.html" %}
 <body>
-<h1>Hopp {{ name }}!</h1>
-<a>Wie gehts?</a>
-<a href="{{ link }}">Test</a>
-<p> </p>
 
-</body>
-</html>
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">Lernessionmaster</h1>
+        <p>Mit dem Lernsessionmaster kannst du deine Lernsession erfassen, Vorschläge für weitere Lernsessions ausgeben und die gelernten Themengebiete anhand des Beherrschungsgrades analysieren!</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for card in cards %}
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h2>Fächer erfassen</h2>
+                <p>In der Rubrik "Fächer erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern</p>
+                <p><a class="btn btn-secondary" href="{{ url_for('faecher-erfassen') }}" role="button">Fächer erfassen</a></p>
+        </div>
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h2>Lernsession erfassen</h2>
+                <p>In der Rubrik "Lernsession erfassen" kannst du deine erledigten Lernsession dokumentieren</p>
+                <p><a class="btn btn-secondary" href="{{ url_for('lernession-erfassen') }}" role="button">Lernsession erfassen</a></p>
+        </div>
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h2>Vorschläge</h2>
+                <p>In der Rubrik Vorschläge kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für eine Lernsession, welche dann als offener To-Do Punkt unter "Übersicht" aufgelistet wird.</p>
+                <p><a class="btn btn-secondary" href="{{ url_for('vorschlaege') }}" role="button">Vorschläge</a></p>
+            </div>
+        <div class="card m-3" style="width: 18rem;">
+            <div class="card-body">
+                <h2>Übersicht</h2>
+                <p>Auf der Übersicht findest du die offenen Vorschläge für deine Lernsessions, welche du noch abarbeiten musst.
+                    Ausserdem befindet sich auf der Seite eine Analyse zu deinen erledigten Lernsessions.</p>
+                <p><a class="btn btn-secondary" href="{{ url_for('uebersicht') }}" role="button">Übersicht</a></p>
+        </div>
+            {% endfor %}
+    </div>
+</div>
+{% include "footer.html" %}

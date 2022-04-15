@@ -2,42 +2,64 @@ from flask import Flask
 from flask import render_template
 from flask import url_for
 from flask import request
-import random
-from datetime import datetime
-
 
 app = Flask(__name__)
 
-@app.route("/Faecher-erfassen" = ["get", "post"])
-def form_studium():
-    if request.method.lower() == "get":
-        return render_template("formular_faecher_erfassen.html")
+@app.route('/')
+def home():
+    name = "Lernsessionmaster"
+        cards = [
+            {"titel": "Fächer erfassen", "inhalt": "In der Rubrik "Fächer erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern"},
+            {"titel": "Lernsession erfassen", "inhalt": "In der Rubrik "Lernsession erfassen" kannst du deine erledigten Lernsession dokumentieren"},
+            {"titel": "Vorschläge", "inhalt": "In der Rubrik Vorschläge kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für eine Lernsession, welche dann als offener To-Do Punkt unter "Übersicht" aufgelistet wird."},
+            {"titel": "Übersicht", "inhalt": "Auf der Übersicht findest du die offenen Vorschläge für deine Lernsessions, welche du noch abarbeiten musst.
+                    Ausserdem befindet sich auf der Seite eine Analyse zu deinen erledigten Lernsessions."}
+        ]
+    # Rendern des index.html Templates, für das Anzeigen der index.html Page.
+        return render_template("start.html", name=name, cards=cards)
+
+@app.route("/faecher-erfassen", methods= ["get", "post"])
+def study_erfassen():
     if request.method.lower() == "post":
-        link to Lernsessions erfassen
+        name_study_antwort = request.form['study']
+        name_semester_antwort = request.form['semester']
+        name_subjects_antwort = request.form['subjects']
+
+        erfassen_speichern_faecher (name_study_antwort,
+                           name_semester_antwort,
+                           name_time_session_antwort,
+                           name_subjects_antwort)
+
+    return render_template('facher_erfassen.html')
 
 
-
-@app.route("/Lernsessions-erfassen" = ["get", "post"])
-def form_lernsession():
-    if request.method.lower() == "get":
-        return render_template("formular_lernsession_erfassen.html")
+@app.route("/lernsession-erfassen", methods=["get", "post"])
+def lernsession_erfassen():
     if request.method.lower() == "post":
-        link to Abfrage
+        name_subject_session_antwort = request.form['subject_session']
+        name_topic_session_antwort = request.form['topic_session']
+        name_time_session_antwort = request.form['time_session']
+        name_time_session_antwort = int(name_time_session_antwort)
+        control_session_antwort = request.form['control_session']
+
+        erfassen_speichern_lernsession (name_subject_session_antwort,
+                           name_topic_session_antwort,
+                           name_time_session_antwort,
+                           name_time_session_antwort,
+                           control_session_antwort)
+    return render_template('lernsession_erfassen.html')
 
 
-@app.route("/Abfrage", methods = ["get", "post"])
-def form_abfrage():
-    if request.method.lower() == "get":
-        return render_template("formular_abfrage.html")
+
+@app.route("/vorschlaege", methods=["get", "post"])
+def vorschlaege_ausgabe():
     if request.method.lower() == "post":
-        link to Uebersicht
 
 
-@app.route("/Uebersicht")
+@app.route("/uebersicht")
 def uebersicht():
-    if request.method.lower() == "get":
-        return render_template("formular_uebersicht.html")
-    if request.method.lower() == "post":
+    return render_template('uebersicht.html',
+                           lernsessions_gespeichert=lernsessions_gespeichert_oeffnen())
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

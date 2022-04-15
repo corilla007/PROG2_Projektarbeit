@@ -1,0 +1,39 @@
+{% include "navigation.html" %}
+<body>
+<div class="jumbotron">
+    <div class="container">
+       <h1> Fächer erfassen</h1>
+       <p>Erfasse dein Studium und akutell abzuschliessende Fächer:</p>
+            <form>
+                <div class="form-group">
+                  <label for="study">Was studierst du?</label><br>
+                  <input type="text" class="form-control" id="study" placeholder="Bitte eingeben" required>
+                </div><br>
+                <div class="form-group">
+                    <label for="semester">In welchem Semester befindest du dich?</label> <br>
+                    <select class="form-control" id="semester" >
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                    </select>
+                  </div><br>
+                  <div class="form-group">
+                  <div class="form-group">
+                    <label for="subjects">Welche Fächer besuchst du momentan?</label><br>
+                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                  </div><br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
+</div>
+{% include "footer.html" %}
+<body>
