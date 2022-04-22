@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include "navigation.html" %}
 
-</body>
-</html>
+<div class="jumbotron">
+    <div class="container">
+        <h1>Vorschläge für eine Lernsession</h1>
+        <p> Wähle die passende Lernsession aus, die du abarbeiten möchtest. Sobald du die Lernsession ausgewählt hast, wird
+        sie die unter "Übersicht" bei "To-Do" angezeigt.</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Fach</th>
+              <th scope="col">Thema</th>
+              <th scope="col">Momentaner Beherrschunsgrad</th>
+            </tr>
+          </thead>
+            <!-- Mit der For-Schleife wird die Abfrage in eine bestimmte Reihenfolge gebracht ----->
+          <tbody>
+          {% for daten in vorschlaege.values() %}
+            <tr>
+                <!-- Die Values des Dicts data werden mithilfe der Keys ausgegeben. -->
+              <th scope="row">1</th>
+              <td>{data["Fach"]}}</td>
+              <td>{{data["Thema"]}}</td>
+              <td>{{data["Beherrschungsgrad"]}}</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>

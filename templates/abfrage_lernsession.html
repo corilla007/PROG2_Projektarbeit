@@ -1,0 +1,28 @@
+{% include "navigation.html" %}
+<body>
+<div class="jumbotron">
+    <div class="container">
+       <h1> Vorschläge </h1>
+       <p>Erfasse deinen gewünschten Lernsession-Vorschlag</p>
+            <form>
+                <div class="form-group">
+                  <label for="abfrage_subject">Welches Fach möchtest du lernen?</label><br>
+                  <select class="form-control" id="abfrage_subject" >
+                  <option value="--">Bitte wählen:</option>
+                  </select>
+                </div><br>
+                  <div class="form-group">
+                    <label for="abfrage_control">Wähle einen Beherrschungsgrad aus</label><br>
+                    <select class="form-control" id="abfrage_control" >
+                      <option>Sehr gut</option>
+                      <option>Gut</option>
+                      <option>O.K.</option>
+                      <option>Schlecht</option>
+                      <option>Sehr schlecht</option>
+                    </select>
+                  </div><br>
+              <button type="submit" class="btn btn-primary">Lernsession finden</button>
+            </form>
+    </div>
+</div>
+{% include "footer.html" %}
