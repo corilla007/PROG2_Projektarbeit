@@ -1,6 +1,6 @@
 import json
 
-# Funktion zum Öffnen der Datenbank "studium".
+# Funktion zum Öffnen der Datenbank "datenbank_studium  ".
 def open_studium():
     try:
         with open("datenbank_studium.json", "r", encoding="utf-8") as datenbank_studium:
@@ -33,25 +33,23 @@ def open_vorschlaege():
 
     return vorschlaege
 
-def erfassen_speichern_studium (name_studium_erfassen_speichern,
-                               name_study_antwort,
+def erfassen_speichern_studium (name_study_antwort,
                                name_semester_antwort,
                                name_subjects_antwort):
-    #Funktion open_faecher wird ausgeführt, gespeicherte Fächer werden geöffnet.
+    #Funktion open_studium wird ausgeführt, gespeicherte Angaben werden geöffnet.
     studium = open_studium()
     # Neuer Dictionary wird mit den eingetragenen Daten befüllt.
     studies = {
         name_studium_erfassen_speichern: {
-            "Studium": name_study_antwort
-            "Semester": name_semester_antwort
+            "Studium": name_study_antwort,
+            "Semester": name_semester_antwort,
             "Fächer": name_subjects_antwort
         }
     }
 
     studium.update(studies)
 
-def erfassen_speichern_lernsession (name_lernsessions_erfassen_speichern,
-                                    name_subject_session_antwort,
+def erfassen_speichern_lernsession (name_subject_session_antwort,
                                     name_topic_session_antwort,
                                     name_time_session_antwort,
                                     control_session_antwort):
@@ -72,35 +70,39 @@ def erfassen_speichern_lernsession (name_lernsessions_erfassen_speichern,
     lernsessions.update(lernsession)
 
 # Der Neue Dictonary wird in der Json-Datei gespeichert.
-with open('datenbank_lernsessions.json', 'w') as datenbank_lernsessions:
-    json.dump(lernsessions, datenbank_lernsessions)
+    with open('datenbank_lernsessions.json', 'w') as datenbank_lernsessions:
+        json.dump(lernsessions, datenbank_lernsessions)
 
-return name_subject_session_antwort, name_topic_session_antwort, name_time_session_antwort, control_session_antwort
+    return name_subject_session_antwort, \
+           name_topic_session_antwort, \
+           name_time_session_antwort,\
+           control_session_antwort
 
 
 def filter(abfrage_vorschlag_subject_antwort,
            abfrage_vorschlag_control_antwort):
-# Funktion open_lernsessions wird ausgeführt, gespeicherte Lernsessions werden geöffnet.
-lernsessions = open_lernsessions()
 
-# Leerer Dict wird geöffnet
-    vorschlaege_abfrage = {}
+    # Funktion filter wird ausgeführt, gespeicherte Lernsessions werden geöffnet.
+    lernsessions = open_lernsessions()
+
+    # Leerer Dict wird abgefüllt
+    vorschlaege = {}
 
     """
-    Der Dict lernsessions wird in die Sequenzen key (fach) und 
+    Der Dict lernsessions wird in key (fach) und 
     value (Beherrschungsgrad) geteilt.
     """
-    for key, value in lernsession.items():
+    for key, value in lernsessions.items():
         #Es wird bei allen keys überprüft, ob sie der entsprechenden Variable entsprechen.
-        if lernsessions[key]["Fach"] == abfrage_vorschlag_subject_antwort
-            and lernsession[key]["Beherrschunsgrad"] == abfrage_vorschlag_control_antwort:
+        if lernsessions[key]["Fach"] == abfrage_vorschlag_subject_antwort\
+                and lernsessions[key]["Beherrschunsgrad"] == abfrage_vorschlag_control_antwort:
 
-        #Values welche der Abfrage entsprechen, werden in den Vorschlägen angezeigt
-        vorschlag = {
-            lernsession[key]["Fach"],
-            lernsession[key]["Beherrschunsgrad"]
-        }
-        vorschlaege.update(vorschlag)
+        #Values, welche der Abfrage entsprechen, werden in den Vorschlägen angezeigt
+            vorschlag = {
+            "Fach": lernsessions[key]["Fach"],
+            "Beherrschungsgrad": lernsessions[key]["Beherrschunsgrad"]
+            }
+            vorschlaege.update(vorschlag)
 
         #Der befüllte Dict "vorschläge" wird in der Datenbank "datenbank_vorschlaege_lernsession gespeichert.
         #Sollte keine Lernsession mit der Abfrage übereinstimmen, wird der String "Leider keine Vorschläge für diese Abfrage vorhanden" ausgegeben.

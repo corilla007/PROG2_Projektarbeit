@@ -8,17 +8,17 @@
 </div>
 <div class="card text-center">
   <div class="card-body">
-    <h5 class="card-title">Fächer erfassen</h5>
+    <h5 class="card-title">Lernsession erfassen</h5>
     <p class="card-text">In der Rubrik "Lernsession erfassen" kannst du deine erledigten Lernsession dokumentieren</p>
-    <a href="{{ url_for('faecher-erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
+    <a href="{{ url_for('studium_erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
   </div>
 </div>
 
 <div class="card text-center">
   <div class="card-body">
-    <h5 class="card-title">Lernsession erfassen</h5>
-    <p class="card-text">In der Rubrik "Fächer erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern</p>
-    <a href="{{ url_for('lernession-erfassen') }}" class="btn btn-primary">Fächer erfassen</a>
+    <h5 class="card-title">Studium erfassen</h5>
+    <p class="card-text">In der Rubrik "Studium erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern</p>
+    <a href="{{ url_for('lernession_erfassen') }}" class="btn btn-primary">Studium erfassen</a>
   </div>
 </div>
 
@@ -26,7 +26,7 @@
   <div class="card-body">
     <h5 class="card-title">Vorschläge</h5>
     <p class="card-text">In der Rubrik Vorschläge kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für eine Lernsession, welche dann als offener To-Do Punkt unter "Übersicht" aufgelistet wird.</p>
-    <a href="{{ url_for('vorschlaege') }}" class="btn btn-primary">Fächer erfassen</a>
+    <a href="{{ url_for('vorschlaege') }}" class="btn btn-primary">Vorschläge auswählen</a>
   </div>
 </div>
 
@@ -35,7 +35,7 @@
     <h5 class="card-title">Übersicht</h5>
     <p class="card-text">Auf der Übersicht findest du die offenen Vorschläge für deine Lernsessions, welche du noch abarbeiten musst.
                     Ausserdem befindet sich auf der Seite eine Analyse zu deinen erledigten Lernsessions.</p>
-    <a href="{{ url_for('uebersicht') }}" class="btn btn-primary">Fächer erfassen</a>
+    <a href="{{ url_for('uebersicht') }}" class="btn btn-primary">Übersicht erfassen</a>
   </div>
 </div>
 {% include "footer.html" %}
