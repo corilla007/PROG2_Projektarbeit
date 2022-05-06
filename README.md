@@ -45,7 +45,7 @@ Mit dem Klick auf den Button "Vorschlag speichern" wird man automatisch zur Übe
 
 <h3>5.4 Übersicht</h3>
 Die gespeicherten Lernsessions werden im oberen Teil der Seite Übersicht unter "To-Do" ausgegeben. Wird eine Lernsession unter To-Do abgearbeitet, kann der Punkt angeklickt werden und verschwindet anschliessend aus der Liste. 
-Die abgearbeiteten Lernsession werden in einem Container zusammegezählt.
+Die abgearbeiteten Lernsession werden in einem Container zusammengezählt.
 Unterhalb der Seite kann eine Analyse gestartet werden.
 Folgende Gebiete können über den gesamten Container abgefragt werden: 
 Dieses Fach/Thema wurde am häufigsten gelernt.

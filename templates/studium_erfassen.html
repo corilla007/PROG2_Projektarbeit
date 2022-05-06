@@ -1,5 +1,4 @@
 {% include "navigation.html" %}
-<body>
 <div class="jumbotron">
     <div class="container">
        <h1> Fächer erfassen</h1>
@@ -7,11 +6,11 @@
             <form>
                 <div class="form-group">
                   <label for="study">Was studierst du?</label><br>
-                  <input type="text" class="form-control" id="study" placeholder="Bitte eingeben" required>
+                  <input type="text" name="study_1" class="form-control" id="study" placeholder="Bitte eingeben" required>
                 </div><br>
                 <div class="form-group">
                     <label for="semester">In welchem Semester befindest du dich?</label> <br>
-                    <select class="form-control" id="semester" >
+                    <select name="semester" class="form-control" id="semester" >
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -25,15 +24,14 @@
                   <div class="form-group">
                   <div class="form-group">
                     <label for="subjects">Welche Fächer besuchst du momentan?</label><br>
-                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
-                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
-                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
-                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
-                    <input type="text" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" name="subject_1" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" name="subject_2" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" name="subject_3" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" name="subject_4" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" name="subject_5" class="form-control" id="subjects" placeholder="Bitte eingeben" required><br><br>
                   </div><br>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Senden</button>
             </form>
     </div>
 </div>
 {% include "footer.html" %}
-<body>

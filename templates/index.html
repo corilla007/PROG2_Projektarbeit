@@ -1,24 +1,25 @@
-{% include "navigation.html" %}
-<body>
+{% include "header.html" %}
+
 <div class="jumbotron">
     <div class="container">
-        <h1 class="display-3">Lernessionmaster</h1>
-        <p>Mit dem Lernsessionmaster kannst du deine Lernsession erfassen, Vorschläge für weitere Lernsessions ausgeben und die gelernten Themengebiete anhand des Beherrschungsgrades analysieren!</p>
+        <h1 class="display-3">Lernsession</h1>
+        <p>Mit dem Lernsessionmaster kannst du deine Lernsession erfassen, Vorschläge für weitere Lernsessions ausgeben
+            und die gelernten Themengebiete anhand des Beherrschungsgrades analysieren!</p>
     </div>
 </div>
 <div class="card text-center">
-  <div class="card-body">
+    <div class="card-body">
     <h5 class="card-title">Lernsession erfassen</h5>
     <p class="card-text">In der Rubrik "Lernsession erfassen" kannst du deine erledigten Lernsession dokumentieren</p>
-    <a href="{{ url_for('studium_erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
-  </div>
+    <a href="{{ url_for('study_erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
+</div>
 </div>
 
 <div class="card text-center">
   <div class="card-body">
     <h5 class="card-title">Studium erfassen</h5>
     <p class="card-text">In der Rubrik "Studium erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern</p>
-    <a href="{{ url_for('lernession_erfassen') }}" class="btn btn-primary">Studium erfassen</a>
+    <a href="{{ url_for('lernsession_erfassen') }}" class="btn btn-primary">Studium erfassen</a>
   </div>
 </div>
 
@@ -26,7 +27,7 @@
   <div class="card-body">
     <h5 class="card-title">Vorschläge</h5>
     <p class="card-text">In der Rubrik Vorschläge kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für eine Lernsession, welche dann als offener To-Do Punkt unter "Übersicht" aufgelistet wird.</p>
-    <a href="{{ url_for('vorschlaege') }}" class="btn btn-primary">Vorschläge auswählen</a>
+    <a href="{{ url_for('vorschlaege_ausgabe') }}" class="btn btn-primary">Vorschläge auswählen</a>
   </div>
 </div>
 
