@@ -1,0 +1,31 @@
+{% include "header.html" %}
+
+<div class="jumbotron">
+    <div class="container">
+       <h1>Lernstoff erfassen</h1>
+       <p>Erfasse deine aktuellen Fächer und die dazugehörigen Thema und gib den jeweiligen Beherrschungsgrad an.</p>
+            <form method="POST">
+                <div class="form-group">
+                  <label for="subjects_lernstoff">Fach</label><br>
+                  <input type="text" class="form-control" name="subjects_lernstoff" id= "subjects_lernstoff" placeholder="Bitte eingeben" required>
+                </div><br>
+                <div class="form-group" style="float:left">
+                  <label for="topic_lernstoff">Thema</label><br>
+                  <input type="text" class="form-control" name="topic_lernstoff" id="topic_lernstoff" placeholder="Bitte eingeben" required>
+                </div>
+                <div class="form-group" style="float:left">
+                    <label for="control_lernstoff">Wie gut beherrst du das Thema..Sei ehrlich!</label><br>
+                    <select class="form-control" name="control_lernstoff" id="control_lernstoff" >
+                      <option>Sehr gut</option>
+                      <option>Gut</option>
+                      <option>O.K.</option>
+                      <option>Schlecht</option>
+                      <option>Sehr schlecht</option>
+                    </select>
+                </div><br>
+                <button type="submit" class="btn btn-primary">Weiteren Lernstoff erfassen</button>
+                <button type="submit" class="btn btn-primary">Senden</button>
+            </form>
+    </div>
+</div>
+{% include "footer.html" %}

@@ -1,9 +1,11 @@
 from flask import Flask
 from flask import render_template
-from flask import redirect
-from flask import url_for
 from flask import request
-from funktionen import erfassen_speichern_studium, erfassen_speichern_lernsession, open_lernsessions, filter
+import plotly.express as px
+from plotly.offline import plot
+from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_auflistung
+from datetime import date
+
 
 
 app = Flask('Lernsessionmaster')
@@ -15,19 +17,37 @@ def home():
     # Rendern des index.html Templates, für das Anzeigen der index.html Page.
 
 
-@app.route("/studium_erfassen", methods=["get", "post"])
-def study_erfassen():
+@app.route("/lernstoff_erfassen", methods=["get", "post"])
+def lernstoff_erfassen():
     if request.method.lower() == "post":
-        # Die Antworten aus dem Formular studium_erfassen.html werden in Variablen gespeichert.
-        name_study_antwort = request.form["study"]
-        name_semester_antwort = request.form["semester"]
-        name_subjects_antwort = request.form["subjects"]
-        # Die Funktion erfassen_speichern_studium aus funktionen.py wird mit den obenstehenden Variablen ausgeführt.
-        erfassen_speichern_studium(name_study_antwort,
-                                   name_semester_antwort,
-                                   name_subjects_antwort)
-        return redirect(url_for("lernsession_erfassen.html"))
-    return render_template("studium_erfassen.html")
+        # Die Antworten aus dem Formular lernstoff_erfassen werden in Variablen gespeichert.
+        name_lernstoff_subjects_antwort = request.form["subjects_lernstoff"]
+        name_lernstoff_topic_antwort = request.form["topic_lernstoff"]
+        name_lernstoff_control_antwort = request.form["control_lernstoff"]
+
+        # Die Funktion erfassen_speichern_lernstoff aus funktionen.py wird mit den obenstehenden Variablen ausgeführt
+        erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
+                                     name_lernstoff_topic_antwort,
+                                     name_lernstoff_control_antwort)
+        return render_template("Ranking_Lernstoff.html")
+    return render_template("lernstoff_erfassen.html")
+
+
+@app.route("/ranking", methods=["get", "post"])
+def ranking():
+    if request.method.lower() == "post":
+        # Die Antworten aus dem Formular lernstoff_erfassen werden in Variablen gespeichert.
+        name_lernstoff_subjects_ranking_antwort = request.form["subjects_lernstoff"]
+        name_lernstoff_topic_ranking_antwort = request.form["topic_lernstoff"]
+        name_lernstoff_control_ranking_antwort = request.form["control_lernstoff"]
+
+        # Die Funktion ranking_auflistung aus funktionen.py wird mit den obenstehenden Variablen ausgeführt
+
+        ranking_auflistung(name_lernstoff_subjects_ranking_antwort,
+                           name_lernstoff_topic_ranking_antwort,
+                           name_lernstoff_control_ranking_antwort)
+        return render_template("Ranking_Lernstoff.html")
+    return render_template("Ranking_Lernstoff.html")
 
 
 @app.route("/lernsession_erfassen", methods=["get", "post"])
@@ -50,24 +70,31 @@ def lernsession_erfassen():
     return render_template("lernsession_erfassen.html")
 
 
-@app.route("/vorschlaege_erfassen", methods=["get", "post"])
-def vorschlaege_ausgabe():
-    if request.method.lower() == "post":
-        # Antworten aus dem Formular vorschlaege_lernsession werden in Variablen gespeichert.
-        abfrage_vorschlag_subject_antwort = request.form["abfrage_subject"]
-        abfrage_vorschlag_control_antwort = request.form["abfrage_control"]
 
-        # Die Funktion filter aus funktionen.py wird mit den Variabeln ausgeführt.
-        # Passende Vorschläge werden zurückgegeben.
-        vorschlaege = filter(abfrage_vorschlag_subject_antwort,
-                             abfrage_vorschlag_control_antwort)
-        return render_template("vorschlaege_lernsession.html",
-                               gespeicherte_lernsessions=open_lernsessions(), vorschlaege=vorschlaege)
-    return render_template("abfrage_lernsession.html")
+@app.route("/data")
+def get_data():
+    data = px.data.gapminder()
+    data.head()
+
+    df = px.data.tips()
+    fig = px.pie(df, values='tip', names='day')
+    fig.show()
+
+    jahr = [2015, 2016, 2017, 2018, 2019, 2021]
+    loc = [1500, 3500, 12000, 9000, 10000, 4000]
+    return jahr, loc
+
+def viz():
+    jahr, loc = get_data()
+    fig = px.bar(x=jahr, y=loc)
+    div = plot(fig, output_type="div")
+    return div
 
 @app.route("/uebersicht")
-def uebersicht():
-    return "ok"
+def analyse():
+    div = viz()
+    return render_template('uebersicht.html', viz_div=div)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

@@ -1,16 +1,19 @@
-
+from datetime import date
 import json
 
-# Funktion zum Öffnen der Datenbank "datenbank_studium  ".
-def open_studium():
-    try:
-        with open("datenbank_studium.json", "r", encoding="utf-8") as datenbank_studium:
-            # Inhalt der Datenbank wird als Dictonary gespeichert.
-            studium = json.load(datenbank_studium)
-    except:
-        studium = {}
 
-    return studium
+# Funktion zum Öffnen der Datenbank "datenbank_studium  ".
+def open_lernstoff():
+    try:
+        with open("datenbank_lernstoff.json", "r", encoding="utf-8") as datenbank_lernstoff:
+            # Inhalt der Datenbank wird als Dictonary gespeichert.
+            lernstoff = json.load(datenbank_lernstoff)
+
+    except FileNotFoundError:
+        lernstoff = {}
+
+    return lernstoff
+
 
 # Funktion zum Öffnen der Datenbank "datenbank_lernsessions".
 def open_lernsessions():
@@ -18,10 +21,11 @@ def open_lernsessions():
         with open("datenbank_lernsessions.json", "r", encoding="utf-8") as datenbank_lernsessions:
             # Inhalt der Datenbank wird als Dictonary gespeichert.
             lernsessions = json.load(datenbank_lernsessions)
-    except:
+    except FileNotFoundError:
         lernsessions = {}
 
     return lernsessions
+
 
 # Funktion zum Öffnen der Datenbank "datenbank_vorschlaege_lernsessions".
 def open_vorschlaege():
@@ -29,30 +33,30 @@ def open_vorschlaege():
         with open("datenbank_vorschlaege_lernsessions.json", "r", encoding="utf-8") as datenbank_vorschlaege_lernsessions:
             # Inhalt der Datenbank wird als Dictonary gespeichert.
             vorschlaege = json.load(datenbank_vorschlaege_lernsessions)
-    except:
+    except FileNotFoundError:
         vorschlaege = {}
 
     return vorschlaege
 
 
-def erfassen_speichern_studium(name_study_antwort,
-                               name_semester_antwort,
-                               name_subjects_antwort):
+def erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
+                                 name_lernstoff_topic_antwort,
+                                 name_lernstoff_control_antwort):
 
-    #Funktion open_studium wird ausgeführt, gespeicherte Angaben werden geöffnet.
-    studium = open_studium()
+    #Funktion open_lernstoff wird ausgeführt, gespeicherte Angaben werden geöffnet.
+    lernstoff = open_lernstoff()
     # Neuer Dictionary wird mit den eingetragenen Daten befüllt.
-    studies = {
-            "Studium": name_study_antwort,
-            "Semester": name_semester_antwort,
-            "Fächer": name_subjects_antwort
+    lernstoff_einzel = {
+            "Fach": name_lernstoff_subjects_antwort,
+            "Thema": name_lernstoff_topic_antwort,
+            "Beherrschungsgrad": name_lernstoff_control_antwort
     }
 
-    studium.update(studies)
+    lernstoff.update(lernstoff_einzel)
 
     # Der Neue Dictonary wird in der Json-Datei gespeichert.
-    with open('datenbank_studium.json', 'w') as datenbank_studium:
-        json.dump(studium, datenbank_studium)
+    with open('datenbank_lernstoff.json', 'w') as datenbank_lernstoff:
+        json.dump(lernstoff, datenbank_lernstoff)
 
 
 def erfassen_speichern_lernsession(name_subject_session_antwort,
@@ -78,37 +82,20 @@ def erfassen_speichern_lernsession(name_subject_session_antwort,
         json.dump(lernsessions, datenbank_lernsessions)
 
 
-def filter(abfrage_vorschlag_subject_antwort,
-           abfrage_vorschlag_control_antwort):
-
-    # Funktion filter wird ausgeführt, gespeicherte Lernsessions werden geöffnet.
-    lernsessions = open_lernsessions()
-
-    # Leerer Dict wird abgefüllt
-    vorschlaege = {}
-
-    """
-    Der abgespeicherte Dict lernsessions wird in key (fach) und 
-    value (Beherrschungsgrad) geteilt.
-    """
-    for key, value in lernsessions.items():
-        # Es wird bei allen keys überprüft, ob sie der entsprechenden Variable entsprechen.
-        if lernsessions[key]["Fach"] == abfrage_vorschlag_subject_antwort \
-                and lernsessions[key]["Beherrschunsgrad"] == abfrage_vorschlag_control_antwort:
-
-            # Values, welche der Abfrage entsprechen, werden in den Vorschlägen angezeigt
-            vorschlag = {
-                "Fach": lernsessions[key]["Fach"],
-                "Beherrschungsgrad": lernsessions[key]["Beherrschunsgrad"]
+def ranking_auflistung(name_lernstoff_subjects_ranking_antwort,
+                       name_lernstoff_topic_ranking_antwort,
+                       name_lernstoff_control_ranking_antwort):
+    for option in "lernstoff_erfassen.html":
+        if option == "Sehr Schlecht" or "Schlecht":
+            auflistung = {
+                "Fach": name_lernstoff_subjects_ranking_antwort,
+                "Thema": name_lernstoff_topic_ranking_antwort,
+                "Beherrschungsgrad": name_lernstoff_control_ranking_antwort
             }
-            vorschlaege.update(vorschlag)
+            return auflistung
 
-        # Der befüllte Dict "vorschläge" wird in der Datenbank "datenbank_vorschlaege_lernsession gespeichert.
-        # Sollte keine Lernsession mit der Abfrage übereinstimmen,
-        # wird der String "Leider keine Vorschläge für diese Abfrage vorhanden" ausgegeben.
 
-        if not vorschlaege:
-            vorschlaege = \
-                {"Fach": "Leider keine Vorschläge für diese Abfrage vorhanden"
-            }
+
+
+
 

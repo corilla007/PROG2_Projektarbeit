@@ -1,35 +1,33 @@
-{% include "navigation.html" %}
+{% include "header.html" %}
+
 <div class="jumbotron">
     <div class="container">
-       <h1> Fächer erfassen</h1>
+       <h1> Lernsession erfassen</h1>
        <p>Erfasse deine erledigte Lernsession:</p>
-            <form>
-                <div class="form-group">
-                  <label for="subject_session">Welches Fach hast du gelernt?</label><br>
-                  <select class="form-control" id="subject_session" >
-                  <option value="--">Bitte wählen:</option>
-                  <option value="--">Bitte wählen:</option>
-                  </select>
-                </div><br>
+            <form method="post">
+                  <div class="form-group">
+                    <label for="subject_session"">Welches Fach hast du gelernt?</label><br>
+                    <input type="text" class="form-control" name="subject_session" id="subject_session" placeholder="Bitte eingeben" required><br><br>
+                  </div><br>
                 <div class="form-group">
                     <label for="topic_session">Welches Thema hast du gelernt?</label> <br>
-                    <input type="text" class="form-control" id="topic_session" placeholder="Bitte eingeben" required><br>
+                    <input type="text" class="form-control" name="topic_session" id="topic_session" placeholder="Bitte eingeben" required><br>
                   </div><br>
                   <div class="form-group">
                     <label for="time_session">Wie lange hast du gelernt (in min)?</label><br>
-                    <input type="number" min="1" class="form-control" id="time_session" placeholder="Bitte eingeben" required>
-                  </div><br>
+                    <input type="number" min="1" class="form-control" name="time_session" id="time_session" placeholder="Bitte eingeben" required>
+                  </div><br><br>
                   <div class="form-group">
                     <label for="control_session">Wie gut beherrst du den Lernstoff..Sei ehrlich!</label><br>
-                    <select class="form-control" id="control_session" >
+                    <select class="form-control" name="control_session" id="control_session" >
                       <option>Sehr gut</option>
                       <option>Gut</option>
                       <option>O.K.</option>
                       <option>Schlecht</option>
                       <option>Sehr schlecht</option>
                     </select>
-                  </div><br>
-              <button type="submit" class="btn btn-primary">Speichern</button>
+                  </div><b>
+                <button type="submit" class="btn btn-primary">Speichern</button>
             </form>
     </div>
 </div>

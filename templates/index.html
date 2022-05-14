@@ -7,36 +7,40 @@
             und die gelernten Themengebiete anhand des Beherrschungsgrades analysieren!</p>
     </div>
 </div>
+
 <div class="card text-center">
     <div class="card-body">
-    <h5 class="card-title">Lernsession erfassen</h5>
+    <h5 class="card-title">1. Lernstoff erfassen</h5>
+    <p class="card-text">In der Rubrik "Lernstoff erfassen" kannst du deine aktuellen Fächer und die dazugehörigen Themen
+    erfassen. </p>
+    <a href="{{ url_for('lernstoff_erfassen') }}" class="btn btn-primary">Lernstoff erfassen</a>
+</div>
+</div>
+
+<div class="card text-center">
+    <div class="card-body">
+    <h5 class="card-title">2. Ranking</h5>
+    <p class="card-text">In der Rubrik "Ranking" kannst du deinen eingetragenen Lernstoff anhand des Beherrschungsgrades gerankt ansehen. </p>
+    <a href="{{ url_for('ranking') }}" class="btn btn-primary">Ranking ansehen</a>
+</div>
+</div>
+
+
+<div class="card text-center">
+    <div class="card-body">
+    <h5 class="card-title">3. Lernsession erfassen</h5>
     <p class="card-text">In der Rubrik "Lernsession erfassen" kannst du deine erledigten Lernsession dokumentieren</p>
-    <a href="{{ url_for('study_erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
+    <a href="{{ url_for('lernsession_erfassen') }}" class="btn btn-primary">Lernsession erfassen</a>
 </div>
 </div>
 
-<div class="card text-center">
-  <div class="card-body">
-    <h5 class="card-title">Studium erfassen</h5>
-    <p class="card-text">In der Rubrik "Studium erfassen" kannst du deine aktuellen Fächer in eine Datenbank abspeichern</p>
-    <a href="{{ url_for('lernsession_erfassen') }}" class="btn btn-primary">Studium erfassen</a>
-  </div>
-</div>
 
 <div class="card text-center">
   <div class="card-body">
-    <h5 class="card-title">Vorschläge</h5>
-    <p class="card-text">In der Rubrik Vorschläge kannst du verschiedene Kriterien eingeben, erhältst einen Vorschlag für eine Lernsession, welche dann als offener To-Do Punkt unter "Übersicht" aufgelistet wird.</p>
-    <a href="{{ url_for('vorschlaege_ausgabe') }}" class="btn btn-primary">Vorschläge auswählen</a>
-  </div>
-</div>
-
-<div class="card text-center">
-  <div class="card-body">
-    <h5 class="card-title">Übersicht</h5>
+    <h5 class="card-title">5. Übersicht</h5>
     <p class="card-text">Auf der Übersicht findest du die offenen Vorschläge für deine Lernsessions, welche du noch abarbeiten musst.
                     Ausserdem befindet sich auf der Seite eine Analyse zu deinen erledigten Lernsessions.</p>
-    <a href="{{ url_for('uebersicht') }}" class="btn btn-primary">Übersicht erfassen</a>
+    <a href="{{ url_for('analyse') }}" class="btn btn-primary">Übersicht erfassen</a>
   </div>
 </div>
 {% include "footer.html" %}

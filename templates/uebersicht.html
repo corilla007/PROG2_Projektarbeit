@@ -1,19 +1,21 @@
-{% include "navigation.html" %}
+{% include "header.html" %}
+
 <div class="jumbotron">
     <div class="container">
        <h1> Übersicht </h1>
-       <h2>Deine To-Do Liste</h2>
-         #Datenbank Vorschläge anzeigen
+
+
+        <p>Dieses Fach/Thema wurde am häufigsten gelernt:</p>
+
+        <p>Dieses Fach/Thema beherrschst du am besten:</p>
+
+        <p>Was solltest du dir nochmals ansehen:</p>
+
+
+        <p>Deine Fächer wurden wie folgt gelernt:</p>
+        {{ viz_div|safe }}
+
     </div>
-
-    <h2>Starte jetzt eine Abfrage!</h2>
-    <button>Abfrage starten</button>
-
-    <p>Dieses Fach/Thema wurde am häufigsten gelernt:</p>
-
-    <p>Dieses Fach/Thema beherrschst du am besten:</p>
-
-    <p>Was solltest du dir nochmals ansehen:</p>
 
 </div>
 {% include "footer.html" %}

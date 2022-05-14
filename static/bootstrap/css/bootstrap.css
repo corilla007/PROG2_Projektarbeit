@@ -51,7 +51,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  background-color: #fff;
+  background-color: #c2c2c2;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -1996,7 +1996,7 @@ progress {
 }
 
 .table-secondary {
-  --bs-table-bg: #e2e3e5;
+  --bs-table-bg: #2e2e2e;
   --bs-table-striped-bg: #d7d8da;
   --bs-table-striped-color: #000;
   --bs-table-active-bg: #cbccce;
@@ -2942,13 +2942,13 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #000066;
+  border-color: #1e2460;
 }
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5c636a;
-  border-color: #565e64;
+  background-color: #20214f;
+  border-color: #404040;
 }
 .btn-check:focus + .btn-secondary, .btn-secondary:focus {
   color: #fff;
