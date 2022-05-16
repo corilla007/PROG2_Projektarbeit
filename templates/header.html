@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <title>Lernrock</title>
 </head>
 <body>
 <!--navigation------------------>
-<header class="d-flex justify-content-center py-3">
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="{{ url_for('home')}}" class="nav-link" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="{{ url_for('lernstoff_erfassen')}}" class="nav-link" aria-current="page">Lernstoff erfassen</a></li>
-
-            <li class="nav-item"><a href="{{ url_for('lernsession_erfassen')}}" class="nav-link" aria-current="page">Lernsession erfassen</a></li>
-            <li class="nav-item"><a href="{{ url_for('analyse')}}" class="nav-link" aria-current="page">Übersicht</a></li>
+<header class="nav justify-content-center">
+        <ul class="nav">
+            <li class="nav-item"><a href="{{ url_for('home')}}" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="{{ url_for('lernstoff_erfassen')}}" class="nav-link active" aria-current="page">Lernstoff erfassen</a></li>
+            <li class="nav-item"><a href="{{ url_for('ranking')}}" class="nav-link active" aria-current="page">Ranking</a></li>
+            <li class="nav-item"><a href="{{ url_for('lernsession_erfassen')}}" class="nav-link active" aria-current="page">Lernsession erfassen</a></li>
+            <li class="nav-item"><a href="{{ url_for('analyse')}}" class="nav-link active" aria-current="page">Übersicht</a></li>
         </ul>
 </header>

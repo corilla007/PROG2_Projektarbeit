@@ -1,13 +1,20 @@
-<h1>Webapplikation "Lernsessionmaster"</h1>
+<h1>Webapplikation "Lernrock"</h1>
 <h2>1. Ausganslage</h2>
-In der Lernphase vor den Semesterprüfungen ist es zum Teil unübersichtlich und chaotisch mit der Planung der jeweilligen Lernsessions. Oftmals  wird ein nicht beherrschter Lernstoff vernächlässigt im Verhältnis zum Lernstoff, welche ich bereits beherrsche.
-Mit dieser Webappliaktion werden die Lernsessions dokumentiert. Daraus können Rückschlüsse zu Lernstoffen gezogen werden. Ausserdem bietet die Applikation eine zusätzliche Funktion, welches es ermöglicht, das System einen zufälligen Lernstoff auszuwählen und dieser wird vom Anwender anschliessend gelernt. 
+In der Lernphase folgen die Prüfungstermine oft dicht aufeinander. Zeitgleiches Lernen für 
+mehrere Fächer bleibt daher nicht aus, 
+wenn man sich gerne gründliche vorbereiten möchte. Diese Lernphase führt teilweise dazu, dass sich Studierende
+oft dem Lernstoff widmen, den sie ohnehin bereits beherrschen.
+
 
 <h2>2. Projektidee</h2>
-Die Webapplikation soll mir die Planung der jeweiligen Lernsessions pro Fach und Thema erleichtern und mir aufzeigen, welchen Lernstoff ich noch nicht beherrsche. Ausserdem soll die Applikation Aufschluss darüber geben, für welches Fach am meisten investiert wurde.
+Mit dieser Webappliaktion wird anfangs Semester dokumentiert, welche Fächer und deren Themen zu absolvieren sind. 
+Der Anwender kann dabei den Beherrschungsgrad des jweiligen Themas angeben. Anschliessend wird ein Ranking anhand des Beherrschungsgrades erstellt.
+Somit weiss der Anwender genau, welche Fächer er intensiver lernen muss. Zusätzlich bietet die Applikation eine Erfassungs-Funktion
+über absolvierte Lernsessions. Daraus können Rückschlüsse anhand Datenvisualisierungen gezogen werden.
 
 <h2>3. Betrieb</h2>
-Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:Flask (Flask, render_template, request, redirect, url_for)
+Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
+Flask (Flask, render_template, request, url_for)
 Plotly (plotly.express as px)
 Pandas
 
@@ -16,44 +23,47 @@ Pandas
 
 <h2>5. Architektur</h2>
 
-<h3>5.1 Fächer erfassen</h3>
-Der User muss zu Beginn folgende Daten eingeben, welche dann beim Erfassen einer Lernsession hineingezogen werden: 
-Was studierst du? (Text)
-In welchem Semester befindest du dich? (Zahl)
-Welche Fächer hast du in diesem Semester zu absolvieren? (Text)
-Button Speichern
+<h3>5.1 Lernstoff erfassen</h3>
+Der User gibt zu Beginn den zu absolvierenden Lernstoff an. 
+Folgende Daten müssen eingetragen werden: 
+Fach (Text)
+Thema (Text)
+Wie gut beherrst du das Thema..Sei ehrlich! (Auswahl)
 
-<h3>5.2 Lernsession erfassen</h3>
-Der User kann eine neue Lernsession erfassen. Folgende Daten müssen eingegeben werden:
-Welches Fach hast du gelernt? (Auswahl durch vorherig definierte Fächer)
+Der Anwender kann danach den Datensatz abspeichern, oder weiteren Lernstoff erfassen.
+
+<h3>5.2 Ranking</h3>
+Sobald der Lernstoff erfasst wurde, wird der User auf das Ranking weitergeleitet. 
+Darauf werden die Datensätze nach Beherrschungsgrad gegordnet. 
+Lernstoffe mit den Beherrschunggraden "Sehr schlecht" und "Schlecht" ranken zuoberst.
+
+Der Anwender kann danach den Datensatz abspeichern, oder weiteren Lernstoff erfassen.
+
+<h3>5.3 Lernsession erfassen</h3>
+Der User kann seine absolvierten Lernsession erfassen. Folgende Daten müssen eingegeben werden:
+Welches Fach hast du gelernt?
 Welches Thema hast du gelernt?
-WIe lange hast du gelernt (in min)?
+Wie lange hast du gelernt (in min)?
 Wie gut beherrst du den Lernstoff..Sei ehrlich! (Auswahl)
 Die Eingabe wird mit dem Klick auf den Button "Speichern" gespeichert. Ausserdem kann noch eine weitere Lernsession mit dem Button "Weitere Lernsession erfassen" erfasst werden.
 Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
-Das Feld für die Minutenangaben benötigt eine Zahleneingabe. Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. Andernfalls erscheint eine Fehlermeldung.
-
-<h3>5.3 Abfrage Vorschläge</h3>
-Der User kann eine Abfrage starten. Folgende Daten müssen eingegeben werden:
-Fach (Auswahl)
-Beherrschungsgrad (Auswahl)
-Wird der Button "Vorschläge für eine Lernsessions" angewählt, werden die Angaben des Users mit den Einträgen in der Datenbank verglichen
-Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
-Gibt es keine passende Lernsession, kann der User die Abfrage erneut starten
-Gibt es einen passenden Vorschlag, wird dieser angezeigt.
-Mit dem Klick auf den Button "Vorschlag speichern" wird man automatisch zur Übersicht weitergeleitet.
+Das Feld für die Minutenangaben benötigt eine Zahleneingabe. 
+Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. 
+Andernfalls erscheint eine Fehlermeldung.
 
 <h3>5.4 Übersicht</h3>
-Die gespeicherten Lernsessions werden im oberen Teil der Seite Übersicht unter "To-Do" ausgegeben. Wird eine Lernsession unter To-Do abgearbeitet, kann der Punkt angeklickt werden und verschwindet anschliessend aus der Liste. 
-Die abgearbeiteten Lernsession werden in einem Container zusammengezählt.
-Unterhalb der Seite kann eine Analyse gestartet werden.
+Die gespeicherten Lernstoffe und Lernsessions werden auf der Übersichtsseite anhand Analysen nochmals dargestellt.
+
 Folgende Gebiete können über den gesamten Container abgefragt werden: 
 Dieses Fach/Thema wurde am häufigsten gelernt.
 Dieses Fach/Thema beherrschst du am besten.
 Was solltest du dir nochmals ansehen.
 
 <h2>6. Funktionen</h2>
-Dateneingabe: neue Lernsession erfassen, Abfrage für Lernsession
-Datenspeicherung: mögliche Lernsessions und durchgeführte Lernsessions werden in JSON-Datei gespeichert
-Datenverarbeitung: Abfrage wird mittels For-Schleife mit der Datenbank Lernsessions verglichen, Berechnung für mögliche Lernsession.
-Datenausgabe: Ausgabe des Fachs/Themas, mit höchster Lernzeit, Ausgabe des Fachs/Themas, mit bester Beherrschung, Ausgabe des Fachs/Themas, mit niedrigster Beherrschung
+Dateneingabe: Lernstoff erfassen / Lernsession erfassen
+Datenspeicherung: Lernstoffe und Lernsessions werden in einer JSON-Datei gespeichert.
+Datenverarbeitung: Das Ranking wird mittels For-Schleife aus der Datenbank berechnet.
+Datenausgabe: Ranking wird aus der Datenverarbeitung ausgegeben. 
+Ausgabe des Fachs/Themas, mit höchster Lernzeit, 
+Ausgabe des Fachs/Themas, mit bester Beherrschung, 
+Ausgabe des Fachs/Themas, mit niedrigster Beherrschung

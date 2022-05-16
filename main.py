@@ -8,7 +8,7 @@ from datetime import date
 
 
 
-app = Flask('Lernsessionmaster')
+app = Flask('Lernrock')
 
 
 @app.route("/")

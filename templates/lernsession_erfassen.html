@@ -7,7 +7,7 @@
             <form method="post">
                   <div class="form-group">
                     <label for="subject_session"">Welches Fach hast du gelernt?</label><br>
-                    <input type="text" class="form-control" name="subject_session" id="subject_session" placeholder="Bitte eingeben" required><br><br>
+                    <input type="text" class="form-control" name="subject_session" id="subject_session" placeholder="Bitte eingeben" required><br>
                   </div><br>
                 <div class="form-group">
                     <label for="topic_session">Welches Thema hast du gelernt?</label> <br>
@@ -26,7 +26,8 @@
                       <option>Schlecht</option>
                       <option>Sehr schlecht</option>
                     </select>
-                  </div><b>
+                  </div><br>
+                <a href="{{ url_for('lernsession_erfassen') }}" class="btn btn-primary">Weitere Lernsession erfassen</a>
                 <button type="submit" class="btn btn-primary">Speichern</button>
             </form>
     </div>
