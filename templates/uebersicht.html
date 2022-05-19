@@ -3,18 +3,39 @@
 <div class="jumbotron">
     <div class="container">
        <h1> Übersicht </h1>
+        <table class="table table-striped m-4">
+            <thead class="thead-dark">
+            <h4>Analyse absolvierte Lernsessions:</h4>
+            <th style="width: 10%" scope="col">Diese Themen beherrschst du am besten:</th>
+            </thead>
+        <tbody>
+                {% for listen_element in best_list %}
+                    <tr>
+                        <td>{{listen_element["Thema"]}}</td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+        </table>
 
-
-        <p>Dieses Fach/Thema wurde am häufigsten gelernt:</p>
-
+                <table class="table table-striped m-4">
+            <thead class="thead-dark">
+            <th style="width: 10%" scope="col">Diese Themen musst du dir nochmals anschauen:</th>
+            </thead>
+        <tbody>
+                {% for listen_element in worst_list %}
+                    <tr>
+                        <td>{{listen_element["Thema"]}}</td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+        </table>
+        <h5>Wie viel Zeit wurde für ein Fach investiert (Fach anhand von Minuten aufsummieren)</h5>
         {{ viz_div|safe }}
 
-        <p>Dieses Fach/Thema beherrschst du am besten:</p>
-
-        <p>Was solltest du dir nochmals ansehen:</p>
 
 
-        <p>Deine Fächer wurden wie folgt gelernt:</p>
+        <h3>Analyse Lernstoffe:</h3>
+        <h5>Themen nach Beherrschungsgrad</h5>
 
 
     </div>

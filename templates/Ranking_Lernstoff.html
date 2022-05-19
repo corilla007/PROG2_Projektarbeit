@@ -4,12 +4,24 @@
     <div class="container">
        <h1>Ranking Lernstoff</h1>
        <p>Dein eingetragener Lernstoff wurde nach Beherrschungsgrad gerankt. Nun kannst du mit dem Lernen anfangen!</p>
-        <ol>
-	        <li>1</li>
-	        <li>2</li>
-            <li>3</li>
-	        <li>4</li>
-        </ol>
+            <table class="table table-striped m-4">
+                <thead class="thead-dark">
+                    <th style="width: 10%" scope="col">Fach</th>
+                    <th style="width: 10%" scope="col">Thema</th>
+                    <th style="width: 10%" scope="col">Beherrschungsgrad</th>
+                    <th style="width: 10%" scope="col">Priorisierung</th>
+                </thead>
+                <tbody>
+                {% for element in mein_ranking %}
+                    <tr>
+                        <td>{{element["Fach"]}}</td>
+                        <td>{{element["Thema"]}}</td>
+                        <td>{{element["Beherrschungsgrad"]}}</td>
+                        <td>{{element["Grad"]}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
 
     </div>

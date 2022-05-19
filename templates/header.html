@@ -11,11 +11,15 @@
 <body>
 <!--navigation------------------>
 <header class="nav justify-content-center">
-        <ul class="nav">
-            <li class="nav-item"><a href="{{ url_for('home')}}" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="{{ url_for('lernstoff_erfassen')}}" class="nav-link active" aria-current="page">Lernstoff erfassen</a></li>
-            <li class="nav-item"><a href="{{ url_for('ranking')}}" class="nav-link active" aria-current="page">Ranking</a></li>
-            <li class="nav-item"><a href="{{ url_for('lernsession_erfassen')}}" class="nav-link active" aria-current="page">Lernsession erfassen</a></li>
-            <li class="nav-item"><a href="{{ url_for('analyse')}}" class="nav-link active" aria-current="page">Übersicht</a></li>
-        </ul>
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            </a>
+              <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li class="nav-item"><a href="{{ url_for('home')}}" class="nav-link active" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="{{ url_for('lernstoff_erfassen')}}" class="nav-link active" aria-current="page">Lernstoff erfassen</a></li>
+                    <li class="nav-item"><a href="{{ url_for('ranking')}}" class="nav-link active" aria-current="page">Ranking</a></li>
+                    <li class="nav-item"><a href="{{ url_for('lernsession_erfassen')}}" class="nav-link active" aria-current="page">Lernsession erfassen</a></li>
+                    <li class="nav-item"><a href="{{ url_for('berechnungen')}}" class="nav-link active" aria-current="page">Übersicht</a></li>
+              </ul>
+    </div>
 </header>

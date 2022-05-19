@@ -1,1 +1,32 @@
-{"Fach": "Information and Data Management", "Thema": "Information", "Lernzeit": 20, "Beherrschungsgrad": "Sehr gut"}
+[
+  {
+    "Fach": "Programmierung 2",
+    "Thema": "Persistente Daten",
+    "Lernzeit": 130,
+    "Beherrschungsgrad": "Gut"
+  },
+  {
+    "Fach": "Programmierung 2",
+    "Thema": "Persistente Daten",
+    "Lernzeit": 130,
+    "Beherrschungsgrad": "Gut"
+  },
+  {
+    "Fach": "Information and Data Management",
+    "Thema": "Information",
+    "Lernzeit": 60,
+    "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Information and Data Management",
+    "Thema": "Information",
+    "Lernzeit": 60,
+    "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Franz\u00f6sisch",
+    "Thema": "Subjontif",
+    "Lernzeit": 120,
+    "Beherrschungsgrad": "Sehr schlecht"
+  }
+]

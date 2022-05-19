@@ -3,7 +3,7 @@ from flask import render_template
 from flask import request
 import plotly.express as px
 from plotly.offline import plot
-from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_auflistung
+from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst
 from datetime import date
 
 
@@ -35,19 +35,8 @@ def lernstoff_erfassen():
 
 @app.route("/ranking", methods=["get", "post"])
 def ranking():
-    if request.method.lower() == "post":
-        # Die Antworten aus dem Formular lernstoff_erfassen werden in Variablen gespeichert.
-        name_lernstoff_subjects_ranking_antwort = request.form["subjects_lernstoff"]
-        name_lernstoff_topic_ranking_antwort = request.form["topic_lernstoff"]
-        name_lernstoff_control_ranking_antwort = request.form["control_lernstoff"]
-
-        # Die Funktion ranking_auflistung aus funktionen.py wird mit den obenstehenden Variablen ausgeführt
-
-        ranking_auflistung(name_lernstoff_subjects_ranking_antwort,
-                           name_lernstoff_topic_ranking_antwort,
-                           name_lernstoff_control_ranking_antwort)
-        return render_template("Ranking_Lernstoff.html")
-    return render_template("Ranking_Lernstoff.html")
+    daten = ranking_grad()
+    return render_template("Ranking_Lernstoff.html", mein_ranking=daten)
 
 
 @app.route("/lernsession_erfassen", methods=["get", "post"])
@@ -70,31 +59,11 @@ def lernsession_erfassen():
     return render_template("lernsession_erfassen.html")
 
 
-
-@app.route("/data")
-def get_data():
-    data = px.data.gapminder()
-    data.head()
-
-    df = px.data.tips()
-    fig = px.pie(df, values='tip', names='day')
-    fig.show()
-
-    jahr = [2015, 2016, 2017, 2018, 2019, 2021]
-    loc = [1500, 3500, 12000, 9000, 10000, 4000]
-    return jahr, loc
-
-def viz():
-    jahr, loc = get_data()
-    fig = px.bar(x=jahr, y=loc)
-    div = plot(fig, output_type="div")
-    return div
-
 @app.route("/uebersicht")
-def analyse():
-    div = viz()
-    return render_template('uebersicht.html', viz_div=div)
-
+def berechnungen():
+    daten = best()
+    datensicht_2 = worst()
+    return render_template("uebersicht.html", best_list=daten, worst_list=datensicht_2)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
