@@ -1,10 +1,10 @@
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, url_for, redirect
 import plotly.express as px
 from plotly.offline import plot
-from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst
-from datetime import date
+from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst, zeit
+
 
 
 
@@ -29,7 +29,7 @@ def lernstoff_erfassen():
         erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
                                      name_lernstoff_topic_antwort,
                                      name_lernstoff_control_antwort)
-        return render_template("Ranking_Lernstoff.html")
+        return redirect(url_for('ranking'))
     return render_template("lernstoff_erfassen.html")
 
 
@@ -61,9 +61,12 @@ def lernsession_erfassen():
 
 @app.route("/uebersicht")
 def berechnungen():
-    daten = best()
-    datensicht_2 = worst()
-    return render_template("uebersicht.html", best_list=daten, worst_list=datensicht_2)
+    datenansicht_1 = best()
+    datenansicht_2 = worst()
+    datenansicht_3 = zeit()
+    return render_template("uebersicht.html", best_list=datenansicht_1, worst_list=datenansicht_2,
+                           zeit_list= datenansicht_3
+                           )
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

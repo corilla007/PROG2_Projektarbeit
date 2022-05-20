@@ -5,8 +5,11 @@
        <h1> Übersicht </h1>
         <table class="table table-striped m-4">
             <thead class="thead-dark">
-            <h4>Analyse absolvierte Lernsessions:</h4>
-            <th style="width: 10%" scope="col">Diese Themen beherrschst du am besten:</th>
+            <h4>Analyse absolvierte Lernsessions</h4>
+            <h6>Diese Themen beherrschst du am Besten:</h6>
+
+                    <th style="width: 10%" scope="col">Thema</th>
+
             </thead>
         <tbody>
                 {% for listen_element in best_list %}
@@ -17,9 +20,11 @@
         </tbody>
         </table>
 
-                <table class="table table-striped m-4">
+        <table class="table table-striped m-4">
             <thead class="thead-dark">
-            <th style="width: 10%" scope="col">Diese Themen musst du dir nochmals anschauen:</th>
+            <h6>Diese Themen solltest du dir nochmals anschauen:</h6>
+
+            <th style="width: 10%" scope="col">Thema</th>
             </thead>
         <tbody>
                 {% for listen_element in worst_list %}
@@ -29,14 +34,24 @@
                 {% endfor %}
         </tbody>
         </table>
-        <h5>Wie viel Zeit wurde für ein Fach investiert (Fach anhand von Minuten aufsummieren)</h5>
-        {{ viz_div|safe }}
+        <h6>So viel Zeit hast du pro Fach investiert:</h6>
+        <table class="table table-striped m-4">
+            <thead class="thead-dark">
+            <th style="width: 10%" scope="col">Fach</th>
+            <th style="width: 10%" scope="col">Lernzeit</th>
+            </thead>
+        <tbody>
+                {% for listen_element in zeit_list %}
+                    <tr>
+                        <td>{{listen_element["Fach"]}}</td>
+                        <td>{{listen_element["Lernzeit"]}}</td>
+                    </tr>
+                {% endfor %}
 
-
-
+        </tbody>
+        </table>
         <h3>Analyse Lernstoffe:</h3>
-        <h5>Themen nach Beherrschungsgrad</h5>
-
+<!--- ab hier kommt plotly--->
 
     </div>
 

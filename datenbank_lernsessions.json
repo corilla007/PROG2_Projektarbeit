@@ -6,18 +6,6 @@
     "Beherrschungsgrad": "Gut"
   },
   {
-    "Fach": "Programmierung 2",
-    "Thema": "Persistente Daten",
-    "Lernzeit": 130,
-    "Beherrschungsgrad": "Gut"
-  },
-  {
-    "Fach": "Information and Data Management",
-    "Thema": "Information",
-    "Lernzeit": 60,
-    "Beherrschungsgrad": "Sehr gut"
-  },
-  {
     "Fach": "Information and Data Management",
     "Thema": "Information",
     "Lernzeit": 60,
@@ -27,6 +15,12 @@
     "Fach": "Franz\u00f6sisch",
     "Thema": "Subjontif",
     "Lernzeit": 120,
+    "Beherrschungsgrad": "Sehr schlecht"
+  },
+  {
+    "Fach": "Mathematik",
+    "Thema": "Integralrechnung",
+    "Lernzeit": 60,
     "Beherrschungsgrad": "Sehr schlecht"
   }
 ]
