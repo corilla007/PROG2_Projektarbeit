@@ -3,7 +3,9 @@ from flask import render_template
 from flask import request, url_for, redirect
 import plotly.express as px
 from plotly.offline import plot
-from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst, zeit
+from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst, zeit, thema
+import json
+
 
 
 
@@ -64,9 +66,21 @@ def berechnungen():
     datenansicht_1 = best()
     datenansicht_2 = worst()
     datenansicht_3 = zeit()
+    datenansicht_4 = thema()
+
+
+
     return render_template("uebersicht.html", best_list=datenansicht_1, worst_list=datenansicht_2,
-                           zeit_list= datenansicht_3
+                           zeit_list=datenansicht_3, datenbank_anzahl_beherrschungen=datenansicht_4
                            )
+
+# @app.route("/analyse")
+# def analyse():
+#     barchart = dateninhalt_4
+#     daten = viz()
+#
+#     return render_template ("statistik.html", barchart=fig.show() ,daten= div = viz())
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

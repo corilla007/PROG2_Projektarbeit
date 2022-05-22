@@ -10,6 +10,7 @@ def open_db(datei):
 
     except FileNotFoundError:
         dateiinhalte = []
+        print("no file found or file is corrupted")
 
     return dateiinhalte
 
@@ -26,12 +27,24 @@ def erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
             "Thema": name_lernstoff_topic_antwort,
             "Beherrschungsgrad": name_lernstoff_control_antwort
     }
-    # for value in lernstoff:
-    #     if not any(d["Thema"] == value for d in lernstoff):
-    lernstoff.append(lernstoff_einzel)
-    #     else:
-    #         lernstoff = lernstoff
-    # Der Neue Dictonary wird in der Json-Datei gespeichert.
+
+# Eintragene Antwort wird mit Datenbank verglichen. Ein Thema kann nur einmalig vorkommen.
+    # Wenn das Thema bereits existiert, wird der neue dictionary nicht hinzugefügt.
+
+    new_topic = True
+    for element in lernstoff:
+        if element["Thema"] == name_lernstoff_topic_antwort:
+            print('Topic already exists')
+            new_topic = False
+
+# Gibt es das Thema noch nicht in der Datenbank, wird der Lernstoff hinzugefügt.
+
+    if new_topic == True:
+        lernstoff.append(lernstoff_einzel)
+        print('new Topic', name_lernstoff_topic_antwort, 'has been added')
+
+
+# Der Neue Dictonary wird in der Json-Datei gespeichert.
     with open('datenbank_lernstoff.json', 'w') as datenbank_lernstoff:
         json.dump(lernstoff, datenbank_lernstoff, indent=2)
 
@@ -51,10 +64,9 @@ def erfassen_speichern_lernsession(name_subject_session_antwort,
             "Lernzeit": name_time_session_antwort,
             "Beherrschungsgrad": control_session_antwort
     }
-# Gespeicherte Lernsessions werden mit neuer Lernsession ergänzt.
-    for element in lernsessions:
-        if not any(d["Thema"] == element for d in lernsessions):
-            lernsessions.append(lernsession)
+
+    lernsessions.append(lernsession)
+
 
 # Der Neue Dictonary wird in der Json-Datei gespeichert.
     with open('datenbank_lernsessions.json', 'w') as datenbank_lernsessions:
@@ -85,8 +97,10 @@ def ranking_grad():
 
 
 def best():
+    # Funktion open_db wird ausgeführt, gespeicherte Lernstoffe werden geöffnet.
     dateninhalt = open_db("datenbank_lernsessions.json")
     best_list = []
+    #Wenn beherrschunsgrad "sehr gut" ist, wird das thema der liste hinzugefügt.
     for listen_element in dateninhalt:
         if listen_element["Beherrschungsgrad"] == "Sehr gut":
             best_list.append({"Thema": listen_element["Thema"]})
@@ -94,64 +108,120 @@ def best():
 
 
 def worst():
+    # Funktion open_db wird ausgeführt, gespeicherte Lernstoffe werden geöffnet.
     dateninhalt_2 = open_db("datenbank_lernsessions.json")
     worst_list = []
+    #Wenn beherrschunsgrad "sehr schlecht" ist, wird das thema der liste hinzugefügt.
     for listen_element in dateninhalt_2:
         if listen_element["Beherrschungsgrad"] == "Sehr schlecht":
             worst_list.append({"Thema": listen_element["Thema"]})
     return worst_list
 
 
+#Die Lernzeit wird von der Json-Datei "datenbank_lernsessions" herangezogen.
+#Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1
+#wenn das Fach nur einmalig enthalten ist, dann wird der index zum counter_2. Damit erhöht sich der index um 1. (da nun ein Fach dazugekommen ist.
+#Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Index gelöscht und die Zeit wird aufsummiert.
+#Ansonsten wird nur die Lernzeit hinzugefügt.
+#Wenn die Daten der neuen liste zugeordnet werden, erhöht sich der index um 1.
+
 def zeit():
     dateninhalt_3 = open_db("datenbank_lernsessions.json")
-    summe = 0
     zeit_list = []
+    subject_list = []
+    time = []
+
     for listen_elemente in dateninhalt_3:
-        if listen_elemente["Fach"] == listen_elemente["Fach"]:
-            summe += listen_elemente["Lernzeit"]
-            zeit_list.append({"Fach": listen_elemente["Fach"], "Lernzeit": listen_elemente["Lernzeit"]})
+        subject_list.append(listen_elemente["Fach"])
+        index = 0
+        counter = 0
+        counter_2 = 0
+        for listindex in subject_list:
+            if listen_elemente["Fach"] == listindex:
+                counter = counter + 1
+                if counter == 1:
+                    index = counter_2
+            counter_2 = counter_2 + 1
+
+        if counter == 2:
+            subject_list = subject_list[:-1]
+            time[index] = time[index] + listen_elemente["Lernzeit"]
+        else:
+            time.append(listen_elemente["Lernzeit"])
+
+    index = 0
+    for listindex in subject_list:
+        zeit_list.append({"Fach": subject_list[index], "Lernzeit": time[index]})
+        index = index + 1
+
     return zeit_list
 
 
+#  Funktion dient für die Datenaufbereitung eines Barcharts.
+# Daten von der einten Datenbank herausziehen, aufsummiert und in die andere Datenbank abspeichert.
+
 def thema():
     dateninhalt_4 = open_db("datenbank_lernstoff.json")
-    zero_list = []
     summe_1 = 0
     summe_2 = 0
     summe_3 = 0
     summe_4 = 0
     summe_5 = 0
+
     # Wie viele Themen welchen Beherrschungsgrad (sehr gut, gut, ok, schlecht, sehr schlecht) haben
-    a_key = "Beherrschungsgrad"
-    zero_list.append([a_dict[a_key] for a_dict in dateninhalt_4])
-    for listen_element in zero_list:
-        if listen_element == "Sehr gut":
+    for listen_element in dateninhalt_4:
+        if listen_element["Beherrschungsgrad"] == "Sehr gut":
             summe_1 = summe_1 + 1
-        elif listen_element == "Gut":
+        elif listen_element["Beherrschungsgrad"] == "Gut":
             summe_2 = summe_2 + 1
-        elif listen_element == "O.K.":
+        elif listen_element["Beherrschungsgrad"] == "O.K.":
             summe_3 = summe_3 + 1
-        elif listen_element == "Schlecht":
+        elif listen_element["Beherrschungsgrad"] == "Schlecht":
             summe_4 = summe_4 + 1
         else:
             summe_5 = summe_5 + 1
 
+    print('summe_1 =', summe_1)
+    print('summe_2 =', summe_2)
+    print('summe_3 =', summe_3)
+    print('summe_4 =', summe_4)
+    print('summe_5 =', summe_5)
+
     # Funktion open_db wird ausgeführt
-        anzahl_beherrschungen = open_db("datenbank_anzahl_grad.json")
+    anzahl_beherrschungen = open_db("datenbank_anzahl_grad.json")
 
-        grad_einzel = {
-            {"Beherrschungsgrad": "Sehr gut", "Anzahl": summe_1},
-            {"Beherrschungsgrad": "Gut", "Anzahl": summe_2},
-            {"Beherrschungsgrad": "O.K.", "Anzahl": summe_3},
-            {"Beherrschungsgrad": "Schlecht", "Anzahl": summe_4},
-            {"Beherrschungsgrad": "Sehr schlecht", "Anzahl": summe_5}
-        }
+    grad_einzel =[
+        {"Beherrschungsgrad": "Sehr gut", "Anzahl": summe_1},
+        {"Beherrschungsgrad": "Gut", "Anzahl": summe_2},
+        {"Beherrschungsgrad": "O.K.", "Anzahl": summe_3},
+        {"Beherrschungsgrad": "Schlecht", "Anzahl": summe_4},
+        {"Beherrschungsgrad": "Sehr schlecht", "Anzahl": summe_5}
+    ]
 
-        anzahl_beherrschungen.append(grad_einzel)
+    # Der Neue Dictonary wird in der Json-Datei gespeichert.
+    with open('datenbank_anzahl_grad.json', 'w') as datenbank_anzahl_beherrschungen:
+        json.dump(grad_einzel, datenbank_anzahl_beherrschungen, indent=2)
 
-        # Der Neue Dictonary wird in der Json-Datei gespeichert.
-        with open('datenbank_anzahl_grad.json', 'w') as datenbank_anzahl_beherrschungen:
-            json.dump(anzahl_beherrschungen, datenbank_anzahl_beherrschungen, indent=2)
+
+# def analyse():
+#     dateninhalt_4 = open_db("datenbank_anzahl_beherrschungen")
+#     a_key = "Beherrschunsgrad"
+#     b_key = "Anzahl"
+#     x = [a_dict[a_key] for a_dict in dateninhalt_4]
+#     y = [b_dict[b_key] for b_dict in dateninhalt_4]
+#     fig = px.bar(x=grad, y=anzahl)  # balkendiagramm
+#     fig.show()
+#
+#     div = viz()
+#
+#
+# def viz():
+#     grad, anzahl = get_data()
+#     fig = px.bar(x=grad, y=anzahl)
+#     div = plot(fig, output_type="div")
+#
+
+
 
 
 

@@ -1,5 +1,5 @@
 <h1>Webapplikation "Lernrock"</h1>
-<h2>1. Ausganslage</h2>
+<h2>1. Ausgangslage</h2>
 In der Lernphase folgen die Prüfungstermine oft dicht aufeinander. Zeitgleiches Lernen für 
 mehrere Fächer bleibt daher nicht aus, 
 wenn man sich gerne gründliche vorbereiten möchte. Diese Lernphase führt teilweise dazu, dass sich Studierende
@@ -7,8 +7,8 @@ oft dem Lernstoff widmen, den sie ohnehin bereits beherrschen.
 
 
 <h2>2. Projektidee</h2>
-Mit dieser Webappliaktion wird anfangs Semester dokumentiert, welche Fächer und deren Themen zu absolvieren sind. 
-Der Anwender kann dabei den Beherrschungsgrad des jweiligen Themas angeben. Anschliessend wird ein Ranking anhand des Beherrschungsgrades erstellt.
+Mit dieser Webapplikation wird anfangs Semester dokumentiert, welche Fächer und deren Themen zu absolvieren sind. 
+Der Anwender kann dabei den Beherrschungsgrad des jeweiligen Themas angeben. Anschliessend wird ein Ranking anhand des Beherrschungsgrades erstellt.
 Somit weiss der Anwender genau, welche Fächer er intensiver lernen muss. Zusätzlich bietet die Applikation eine Erfassungs-Funktion
 über absolvierte Lernsessions. Daraus können Rückschlüsse anhand Datenvisualisierungen gezogen werden.
 

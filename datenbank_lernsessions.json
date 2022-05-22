@@ -22,5 +22,29 @@
     "Thema": "Integralrechnung",
     "Lernzeit": 60,
     "Beherrschungsgrad": "Sehr schlecht"
+  },
+  {
+    "Fach": "Information and Data Management",
+    "Thema": "Retrieval",
+    "Lernzeit": 60,
+    "Beherrschungsgrad": "Gut"
+  },
+  {
+    "Fach": "Programmierung 2",
+    "Thema": "Funktionen",
+    "Lernzeit": 30,
+    "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Statistik",
+    "Thema": "Korrelation",
+    "Lernzeit": 50,
+    "Beherrschungsgrad": "Sehr schlecht"
+  },
+  {
+    "Fach": "Statistik",
+    "Thema": "Streuungsmasse",
+    "Lernzeit": 50,
+    "Beherrschungsgrad": "Sehr gut"
   }
 ]

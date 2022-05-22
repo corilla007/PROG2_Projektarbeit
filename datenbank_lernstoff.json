@@ -15,11 +15,6 @@
     "Beherrschungsgrad": "Sehr gut"
   },
   {
-    "Fach": "Psychologie",
-    "Thema": "Das Gehirn",
-    "Beherrschungsgrad": "Sehr schlecht"
-  },
-  {
     "Fach": "Information and Data Management",
     "Thema": "Information",
     "Beherrschungsgrad": "O.K."
@@ -28,5 +23,15 @@
     "Fach": "Psychologie",
     "Thema": "Das Gehirn",
     "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Psychologie",
+    "Thema": "Konditionierung",
+    "Beherrschungsgrad": "O.K."
+  },
+  {
+    "Fach": "Franz\u00f6sisch",
+    "Thema": "Subjonctif",
+    "Beherrschungsgrad": "Gut"
   }
 ]
