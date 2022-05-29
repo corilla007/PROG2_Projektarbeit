@@ -1,22 +1,22 @@
 [
   {
     "Beherrschungsgrad": "Sehr gut",
-    "Anzahl": 2
-  },
-  {
-    "Beherrschungsgrad": "Gut",
-    "Anzahl": 2
-  },
-  {
-    "Beherrschungsgrad": "O.K.",
     "Anzahl": 3
   },
   {
+    "Beherrschungsgrad": "Gut",
+    "Anzahl": 1
+  },
+  {
+    "Beherrschungsgrad": "O.K.",
+    "Anzahl": 1
+  },
+  {
     "Beherrschungsgrad": "Schlecht",
-    "Anzahl": 0
+    "Anzahl": 3
   },
   {
     "Beherrschungsgrad": "Sehr schlecht",
-    "Anzahl": 0
+    "Anzahl": 1
   }
 ]

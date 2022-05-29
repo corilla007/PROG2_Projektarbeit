@@ -2,12 +2,16 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1 class="display-3">Lernrock</h1>
+        <h1 class="display-1">Lernrock</h1>
+
         <p>Mit Lernrock kannst du deinen Lernstoff & Lernsession erfassen. Die App wird dir anhand eines Rankings Vorschläge
             für deine Lernsession generieren und dir aufschlussreiche Analysen zu deinem Können über den Prüfungsstoff ausgeben!</p>
     </div>
 </div>
 
+<div class="text-center">
+<div class="row d-flex justify-content-center">
+<div class="col-md-6">
 <div class="card text-center">
     <div class="card-body">
     <h5 class="card-title">1. Lernstoff erfassen</h5>
@@ -42,5 +46,7 @@
                     Ausserdem befindet sich auf der Seite eine Analyse zu deinen erledigten Lernsessions.</p>
     <a href="{{ url_for('berechnungen') }}" class="btn btn-primary">Übersicht erfassen</a>
   </div>
+</div>
+</div>
 </div>
 {% include "footer.html" %}

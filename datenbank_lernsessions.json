@@ -46,5 +46,23 @@
     "Thema": "Streuungsmasse",
     "Lernzeit": 50,
     "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Statistik",
+    "Thema": "H\u00e4ufigkeit",
+    "Lernzeit": 50,
+    "Beherrschungsgrad": "O.K."
+  },
+  {
+    "Fach": "Mathematik",
+    "Thema": "Differentialrechnung",
+    "Lernzeit": 20,
+    "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Mathematik",
+    "Thema": "Differentialrechnung",
+    "Lernzeit": 30,
+    "Beherrschungsgrad": "Schlecht"
   }
 ]

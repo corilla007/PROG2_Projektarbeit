@@ -1,6 +1,6 @@
 import json
-
-
+import plotly.express as px
+from plotly.offline import plot
 # Funktion zum Öffnen der Datenbank "datenbank_studium  ".
 def open_db(datei):
     try:
@@ -203,26 +203,25 @@ def thema():
         json.dump(grad_einzel, datenbank_anzahl_beherrschungen, indent=2)
 
 
-# def analyse():
-#     dateninhalt_4 = open_db("datenbank_anzahl_beherrschungen")
-#     a_key = "Beherrschunsgrad"
-#     b_key = "Anzahl"
-#     x = [a_dict[a_key] for a_dict in dateninhalt_4]
-#     y = [b_dict[b_key] for b_dict in dateninhalt_4]
-#     fig = px.bar(x=grad, y=anzahl)  # balkendiagramm
-#     fig.show()
-#
-#     div = viz()
-#
-#
-# def viz():
-#     grad, anzahl = get_data()
-#     fig = px.bar(x=grad, y=anzahl)
-#     div = plot(fig, output_type="div")
-#
+def get_data():
+    list_anzahl = []
+    list_beherrschungsgrad = []
+    dateninhalt_5 = open_db("datenbank_anzahl_grad.json")
+    for element in dateninhalt_5:
+        list_anzahl.append(int(element["Anzahl"]))
+        list_beherrschungsgrad.append(element["Beherrschungsgrad"])
+    return list_beherrschungsgrad, list_anzahl
 
 
-
+def viz():
+    beherrschungsgrad, anzahl = get_data()
+    fig = px.bar(x=beherrschungsgrad, y=anzahl)
+    fig.update_layout(
+        title="Anzahl Lernstoffe nach Beherrschungsgrad",
+        xaxis_title="Beherrschunsgrad",
+        yaxis_title="Anzahl")
+    div = plot(fig, output_type="div")
+    return div
 
 
 

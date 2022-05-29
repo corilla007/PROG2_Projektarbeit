@@ -1,37 +1,47 @@
 [
   {
-    "Fach": "PROG2",
-    "Thema": "Persistente Daten",
-    "Beherrschungsgrad": "Gut"
-  },
-  {
-    "Fach": "Mathematik",
-    "Thema": "Funktionen",
-    "Beherrschungsgrad": "O.K."
-  },
-  {
     "Fach": "REQE",
     "Thema": "Klassendiagramm",
     "Beherrschungsgrad": "Sehr gut"
   },
   {
-    "Fach": "Information and Data Management",
-    "Thema": "Information",
-    "Beherrschungsgrad": "O.K."
+    "Fach": "Franz\u00f6sisch",
+    "Thema": "Subjonctif",
+    "Beherrschungsgrad": "Sehr schlecht"
   },
   {
     "Fach": "Psychologie",
     "Thema": "Das Gehirn",
+    "Beherrschungsgrad": "O.K."
+  },
+  {
+    "Fach": "Mathematik",
+    "Thema": "Funktionen",
+    "Beherrschungsgrad": "Schlecht"
+  },
+  {
+    "Fach": "Programmierung 1",
+    "Thema": "Listen",
+    "Beherrschungsgrad": "Gut"
+  },
+  {
+    "Fach": "Information and Data Management",
+    "Thema": "Information",
+    "Beherrschungsgrad": "Sehr gut"
+  },
+  {
+    "Fach": "Requirements Engineering",
+    "Thema": "Aktivit\u00e4tsdiagramm",
+    "Beherrschungsgrad": "Schlecht"
+  },
+  {
+    "Fach": "Projektmanagement",
+    "Thema": "Scrum",
     "Beherrschungsgrad": "Sehr gut"
   },
   {
     "Fach": "Psychologie",
-    "Thema": "Konditionierung",
-    "Beherrschungsgrad": "O.K."
-  },
-  {
-    "Fach": "Franz\u00f6sisch",
-    "Thema": "Subjonctif",
-    "Beherrschungsgrad": "Gut"
+    "Thema": "Verhalten",
+    "Beherrschungsgrad": "Schlecht"
   }
 ]
