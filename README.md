@@ -18,7 +18,9 @@ Flask (Flask, render_template, request, url_for, redirect)
 Plotly (plotly.express as px)
 
 <h2>4. Workflow</h2>
-![](/templates/images/Flowchart_Projekt_PROG2.png)
+
+![Flowchart_Projekt_PROG2.png](templates/images/Flowchart_Projekt_PROG2.png)
+
 <h2>5. Architektur</h2>
 
 <h3>5.1 Lernstoff erfassen</h3>
