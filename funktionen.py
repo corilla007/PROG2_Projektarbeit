@@ -181,11 +181,11 @@ def thema():
         else:
             summe_5 = summe_5 + 1
 
-    print('summe_1 =', summe_1)
-    print('summe_2 =', summe_2)
-    print('summe_3 =', summe_3)
-    print('summe_4 =', summe_4)
-    print('summe_5 =', summe_5)
+    # print('summe_1 =', summe_1)
+    # print('summe_2 =', summe_2)
+    # print('summe_3 =', summe_3)
+    # print('summe_4 =', summe_4)
+    # print('summe_5 =', summe_5)
 
     # Funktion open_db wird ausgeführt
     anzahl_beherrschungen = open_db("datenbank_anzahl_grad.json")

@@ -1,4 +1,4 @@
-<h1>Webapplikation "Lernrock"</h1>
+<h1>Webapplikation "Learnrocket"</h1>
 <h2>1. Ausgangslage</h2>
 In der Lernphase folgen die Prüfungstermine oft dicht aufeinander. Zeitgleiches Lernen für 
 mehrere Fächer bleibt daher nicht aus, 

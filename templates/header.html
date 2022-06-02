@@ -5,21 +5,32 @@
         <!-- Latest compiled and minified CSS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
-    <title>Lernrock</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='bootstrap/css/bootstrap.css') }} ">
+    <title>Learnrocket</title>
 </head>
 <body>
-<!--navigation------------------>
-<header class="nav justify-content-center">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+<!--navigation-->
+<header style="padding: 20px; margin: 20px;">
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+        <img src="images/Learnrocket.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        Learnrocket
+        </a>
+
+    <div class="d-flex flex-wrap align-items-center justify-content-center col-12">
+            <a href="/" class="display-flex align-items-center text-white">
             </a>
-              <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <nav class= "navbar navbar-dark bg-dark">
+              <ul class="nav nav-pills col-12">
                     <li class="nav-item"><a href="{{ url_for('home')}}" class="nav-link active" aria-current="page">Home</a></li>
                     <li class="nav-item"><a href="{{ url_for('lernstoff_erfassen')}}" class="nav-link active" aria-current="page">Lernstoff erfassen</a></li>
                     <li class="nav-item"><a href="{{ url_for('ranking')}}" class="nav-link active" aria-current="page">Ranking</a></li>
                     <li class="nav-item"><a href="{{ url_for('lernsession_erfassen')}}" class="nav-link active" aria-current="page">Lernsession erfassen</a></li>
                     <li class="nav-item"><a href="{{ url_for('berechnungen')}}" class="nav-link active" aria-current="page">Übersicht</a></li>
               </ul>
+        </nav>
     </div>
+    </div>
+    </nav>
 </header>

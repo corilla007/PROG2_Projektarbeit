@@ -4,10 +4,7 @@ from flask import request, url_for, redirect
 from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst, zeit, thema, viz
 
 
-
-
-
-app = Flask('Lernrock')
+app = Flask('Learnrocket')
 
 
 @app.route("/")
