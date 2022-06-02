@@ -14,12 +14,11 @@ Somit weiss der Anwender genau, welche Fächer er intensiver lernen muss. Zusät
 
 <h2>3. Betrieb</h2>
 Damit die Applikation korrekt funktioniert, müssen folgende Module importiert werden:
-Flask (Flask, render_template, request, url_for)
+Flask (Flask, render_template, request, url_for, redirect)
 Plotly (plotly.express as px)
-Pandas
 
 <h2>4. Workflow</h2>
-![Workflow](images/Flowchart_Projekt_PROG2.png)
+[Workflow](templates/images/Flowchart_Projekt_PROG2.png)
 
 <h2>5. Architektur</h2>
 
@@ -45,7 +44,7 @@ Welches Fach hast du gelernt?
 Welches Thema hast du gelernt?
 Wie lange hast du gelernt (in min)?
 Wie gut beherrst du den Lernstoff..Sei ehrlich! (Auswahl)
-Die Eingabe wird mit dem Klick auf den Button "Speichern" gespeichert. Ausserdem kann noch eine weitere Lernsession mit dem Button "Weitere Lernsession erfassen" erfasst werden.
+Die Eingabe wird mit dem Klick auf den Button "Lernsession speichern" gespeichert.
 Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
 Das Feld für die Minutenangaben benötigt eine Zahleneingabe. 
 Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. 
@@ -55,9 +54,11 @@ Andernfalls erscheint eine Fehlermeldung.
 Die gespeicherten Lernstoffe und Lernsessions werden auf der Übersichtsseite anhand Analysen nochmals dargestellt.
 
 Folgende Gebiete können über den gesamten Container abgefragt werden: 
-Dieses Fach/Thema wurde am häufigsten gelernt.
-Dieses Fach/Thema beherrschst du am besten.
-Was solltest du dir nochmals ansehen.
+Dieses Thema beherrschst du am besten (Analyse Lernsession). 
+Dieses Thema musst du dir nochmals ansehen (Analyse Lernsession). 
+So viel Zeit hast du pro Fach investiert (Analyse Lernsession). 
+Datenvisualisierung über Anzahl Beherrschungsgrade der Lernstoffe (Analyse Lernstoffe).
+
 
 <h2>6. Funktionen</h2>
 Dateneingabe: Lernstoff erfassen / Lernsession erfassen
