@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request, url_for, redirect
-from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, ranking_grad, best, worst, zeit, thema, viz
+from funktionen import erfassen_speichern_lernstoff, erfassen_speichern_lernsession, \
+    ranking_grad, best, worst, zeit, thema, viz
 
 
 app = Flask('Learnrocket')
@@ -29,8 +30,26 @@ def lernstoff_erfassen():
     return render_template("lernstoff_erfassen.html")
 
 
+
+@app.route("/lernstoff_erfassen_weitere", methods=["get", "post"])
+def lernstoff_weitere():
+    if request.method.lower() == "post":
+        # Die Antworten aus dem Formular lernstoff_erfassen werden in Variablen gespeichert.
+        name_lernstoff_subjects_antwort = request.form["subjects_lernstoff"]
+        name_lernstoff_topic_antwort = request.form["topic_lernstoff"]
+        name_lernstoff_control_antwort = request.form["control_lernstoff"]
+
+        # Die Funktion erfassen_speichern_lernstoff aus funktionen.py wird mit den obenstehenden Variablen ausgeführt
+        erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
+                                     name_lernstoff_topic_antwort,
+                                     name_lernstoff_control_antwort)
+        return render_template('lernstoff_erfassen.html')
+    return render_template("lernstoff_erfassen.html")
+
+
 @app.route("/ranking", methods=["get", "post"])
 def ranking():
+    # Die Funktion ranking_grad aus funktionen.py wird ausgeführt.
     daten = ranking_grad()
     return render_template("Ranking_Lernstoff.html", mein_ranking=daten)
 
@@ -53,11 +72,6 @@ def lernsession_erfassen():
                                        control_session_antwort)
         return render_template("bestaetigung.html")
     return render_template("lernsession_erfassen.html")
-
-
-
-
-
 
 
 
