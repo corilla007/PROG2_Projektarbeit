@@ -69,3 +69,13 @@ Datenausgabe: Ranking wird aus der Datenverarbeitung ausgegeben.
 Ausgabe des Fachs/Themas, mit höchster Lernzeit, 
 Ausgabe des Fachs/Themas, mit bester Beherrschung, 
 Ausgabe des Fachs/Themas, mit niedrigster Beherrschung
+
+
+<h2>7. Ungelöste Probleme</h2>
+Bei der Seite "/lernstoff_erfassen" wäre ein Button für die weitere Lernstoff-Erfassung angedacht gewesen. 
+Mit dem Klick auf diesen Button sollten die Formular-Antworten ebenfalls in die JSON-Datei abgespeichert werden und
+gleichzeitig sollte wieder das gleiche leere Formular gerendert werden. 
+Dazu wurde eine zweite App-Route erstellt, damit beim Klick auf den Button dieselbe Funktion "erfassen_speichern_lernstoff" aus Funktionen.py ausgeführt wird.
+Somit hätte das Template zwei unterschiedliche Submit-Buttons.
+Mit dem Klick auf diesen Button wird zurzeit das leere Formular gerendet - jedoch speichert es die Antworten nicht in die Datenbank ab.
+
