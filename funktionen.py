@@ -120,7 +120,7 @@ def worst():
     return worst_list
 
 
-#Die Lernzeit wird von der Json-Datei "datenbank_lernsessions" herangezogen.
+#Die Lernzeit wird von der json-Datei "datenbank_lernsessions" herangezogen.
 #Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
 #Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter "meistens" 1 sein. Damit wird der index als counter_2 gespeichert.
 #counter_2 erhöht sich jedesmal beim Aufruf der for-Schlaufe.
