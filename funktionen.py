@@ -1,6 +1,8 @@
 import json
 import plotly.express as px
 from plotly.offline import plot
+
+
 # Funktion zum Öffnen der Datenbank "datenbank_studium  ".
 def open_db(datei):
     try:
@@ -119,8 +121,9 @@ def worst():
 
 
 #Die Lernzeit wird von der Json-Datei "datenbank_lernsessions" herangezogen.
-#Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1
-#wenn das Fach nur einmalig enthalten ist, dann wird der index zum counter_2. Damit erhöht sich der index um 1. (da nun ein Fach dazugekommen ist.
+#Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
+#Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter "meistens" 1 sein. Damit wird der index als counter_2 gespeichert.
+#counter_2 erhöht sich jedesmal beim Aufruf der for-Schlaufe.
 #Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Index gelöscht und die Zeit wird aufsummiert.
 #Ansonsten wird nur die Lernzeit hinzugefügt.
 #Wenn die Daten der neuen liste zugeordnet werden, erhöht sich der index um 1.
@@ -158,7 +161,7 @@ def zeit():
 
 
 #  Funktion dient für die Datenaufbereitung eines Barcharts.
-# Daten von der einten Datenbank herausziehen, aufsummiert und in die andere Datenbank abspeichert.
+# Daten von der einten Datenbank herausziehen, aufsummiert und in die andere Datenbank abgespeichert.
 
 def thema():
     dateninhalt_4 = open_db("datenbank_lernstoff.json")
@@ -190,6 +193,7 @@ def thema():
     # Funktion open_db wird ausgeführt
     anzahl_beherrschungen = open_db("datenbank_anzahl_grad.json")
 
+    #Werte werden in einem einzelnen Dictionary abgespeichert.
     grad_einzel =[
         {"Beherrschungsgrad": "Sehr gut", "Anzahl": summe_1},
         {"Beherrschungsgrad": "Gut", "Anzahl": summe_2},
@@ -202,7 +206,7 @@ def thema():
     with open('datenbank_anzahl_grad.json', 'w') as datenbank_anzahl_beherrschungen:
         json.dump(grad_einzel, datenbank_anzahl_beherrschungen, indent=2)
 
-
+#Daten aus der Datenbank "Datenbank_anzahl_grad" werden in zwei neue Listen abgespeichert für die x und y-Achsenwerte.
 def get_data():
     list_anzahl = []
     list_beherrschungsgrad = []
@@ -212,13 +216,15 @@ def get_data():
         list_beherrschungsgrad.append(element["Beherrschungsgrad"])
     return list_beherrschungsgrad, list_anzahl
 
+#Funktion ruft Funktion "get_data" auf und speichert die x und y-Achsenwerte aus den Listen in die definitiven Variablen "x" und "y" von Plotly.
+#Titel und Achsenbeschriften werden vergeben.
 
 def viz():
     beherrschungsgrad, anzahl = get_data()
     fig = px.bar(x=beherrschungsgrad, y=anzahl)
     fig.update_layout(
         title="Anzahl Lernstoffe nach Beherrschungsgrad",
-        xaxis_title="Beherrschunsgrad",
+        xaxis_title="Beherrschungsgrad",
         yaxis_title="Anzahl")
     div = plot(fig, output_type="div")
     return div
