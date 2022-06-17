@@ -29,8 +29,7 @@ def lernstoff_erfassen():
         return redirect(url_for('ranking'))
     return render_template("lernstoff_erfassen.html")
 
-
-
+#Weiteren Datensatz erfassen mit folgender app.route:
 @app.route("/lernstoff_erfassen_weitere", methods=["get", "post"])
 def lernstoff_weitere():
     if request.method.lower() == "post":
@@ -43,6 +42,7 @@ def lernstoff_weitere():
         erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
                                      name_lernstoff_topic_antwort,
                                      name_lernstoff_control_antwort)
+        #leeres template "lernstoff_erfassen.html" wird wieder ausgegeben.
         return render_template('lernstoff_erfassen.html')
     return render_template("lernstoff_erfassen.html")
 
@@ -76,6 +76,7 @@ def lernsession_erfassen():
 
 
 @app.route("/uebersicht")
+#Funktionen aus funktionen.py werden aufgerufen und ausgeführt.
 def berechnungen():
     datenansicht_1 = best()
     datenansicht_2 = worst()

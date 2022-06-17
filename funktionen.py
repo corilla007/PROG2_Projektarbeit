@@ -9,7 +9,7 @@ def open_db(datei):
         with open(datei, "r") as datenbank_datei:
             # Inhalt der Datenbank wird als Dictonary gespeichert.
             dateiinhalte = json.load(datenbank_datei)
-
+    #Ausser File wird nicht gefunden
     except FileNotFoundError:
         dateiinhalte = []
         print("no file found or file is corrupted")
@@ -30,20 +30,19 @@ def erfassen_speichern_lernstoff(name_lernstoff_subjects_antwort,
             "Beherrschungsgrad": name_lernstoff_control_antwort
     }
 
-# Eintragene Antwort wird mit Datenbank verglichen. Ein Thema kann nur einmalig vorkommen.
+# Eingetragene Antwort wird mit Datenbank verglichen. Ein Thema kann nur einmalig vorkommen.
     # Wenn das Thema bereits existiert, wird der neue dictionary nicht hinzugefügt.
 
     new_topic = True
     for element in lernstoff:
         if element["Thema"] == name_lernstoff_topic_antwort:
-            print('Topic already exists')
+            print("Topic already exists")
             new_topic = False
 
 # Gibt es das Thema noch nicht in der Datenbank, wird der Lernstoff hinzugefügt.
-
     if new_topic == True:
         lernstoff.append(lernstoff_einzel)
-        print('new Topic', name_lernstoff_topic_antwort, 'has been added')
+        print("new Topic", name_lernstoff_topic_antwort, "has been added")
 
 
 # Der Neue Dictonary wird in der Json-Datei gespeichert.
@@ -67,10 +66,11 @@ def erfassen_speichern_lernsession(name_subject_session_antwort,
             "Beherrschungsgrad": control_session_antwort
     }
 
+    # neue lernsession wird der JSON-Datei hinzugefügt
     lernsessions.append(lernsession)
 
 
-# Der Neue Dictonary wird in der Json-Datei gespeichert.
+# Der Neue Dictonary wird in der JSON-Datei gespeichert.
     with open('datenbank_lernsessions.json', 'w') as datenbank_lernsessions:
         json.dump(lernsessions, datenbank_lernsessions, indent=2)
 
@@ -83,6 +83,9 @@ def ranking_grad():
     p2_liste = []
     p3_liste = []
 
+    #für alle elemente in der JSON-Datei "datenbank_lernstoffe" wird ein ranking erstellt.
+    #Wenn der Lernstoff den Beherrschungsgrad "sehrschlecht" erhält, wird ihm die Prio 1 zugeordnet und durch die Reihenfolge
+    #der Zusammensetzung von "mein_ranking" erscheinen die Lernstoffe anhand der Prio geordnet (1-2-3).
     for element in datei_inhalt:
         if element["Beherrschungsgrad"] == "Sehr schlecht":
             grad = "Prio 1"
@@ -99,7 +102,7 @@ def ranking_grad():
 
 
 def best():
-    # Funktion open_db wird ausgeführt, gespeicherte Lernstoffe werden geöffnet.
+    # Funktion open_db wird ausgeführt, gespeicherte Lernsessions werden geöffnet.
     dateninhalt = open_db("datenbank_lernsessions.json")
     best_list = []
     #Wenn beherrschunsgrad "sehr gut" ist, wird das thema der liste hinzugefügt.
@@ -124,7 +127,7 @@ def worst():
 #Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
 #Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter "meistens" 1 sein. Damit wird der index als counter_2 gespeichert.
 #counter_2 erhöht sich jedesmal beim Aufruf der for-Schlaufe.
-#Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Index gelöscht und die Zeit wird aufsummiert.
+#Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Eintrag gelöscht und die Zeit wird aufsummiert.
 #Ansonsten wird nur die Lernzeit hinzugefügt.
 #Wenn die Daten der neuen liste zugeordnet werden, erhöht sich der index um 1.
 
@@ -184,16 +187,10 @@ def thema():
         else:
             summe_5 = summe_5 + 1
 
-    # print('summe_1 =', summe_1)
-    # print('summe_2 =', summe_2)
-    # print('summe_3 =', summe_3)
-    # print('summe_4 =', summe_4)
-    # print('summe_5 =', summe_5)
-
     # Funktion open_db wird ausgeführt
     anzahl_beherrschungen = open_db("datenbank_anzahl_grad.json")
 
-    #Werte werden in einem einzelnen Dictionary abgespeichert.
+    # Werte werden in einem einzelnen Dictionary abgespeichert.
     grad_einzel =[
         {"Beherrschungsgrad": "Sehr gut", "Anzahl": summe_1},
         {"Beherrschungsgrad": "Gut", "Anzahl": summe_2},
@@ -216,8 +213,8 @@ def get_data():
         list_beherrschungsgrad.append(element["Beherrschungsgrad"])
     return list_beherrschungsgrad, list_anzahl
 
-#Funktion ruft Funktion "get_data" auf und speichert die x und y-Achsenwerte aus den Listen in die definitiven Variablen "x" und "y" von Plotly.
-#Titel und Achsenbeschriften werden vergeben.
+#Funktion "viz" ruft Funktion "get_data" auf und speichert die x und y-Achsenwerte aus den Listen in die definitiven Variablen "x" und "y"
+# von Plotly. Titel und Achsenbeschriften werden vergeben.
 
 def viz():
     beherrschungsgrad, anzahl = get_data()
