@@ -124,12 +124,13 @@ def worst():
 
 
 #Die Lernzeit wird von der json-Datei "datenbank_lernsessions" herangezogen.
-#Fach wird in Liste subject_list abgespeichert, wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
-#Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter "meistens" 1 sein. Damit wird der index als counter_2 gespeichert.
-#counter_2 erhöht sich jedesmal beim Aufruf der for-Schlaufe.
+#Fach wird in Liste subject_list abgespeichert. Wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
+#Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter 1 sein.
+#merken an welcher position das fach befindet. Index wird zum counter_2
+#counter_2 erhöht sich wenn forloop zum 2.mal durchgelaufen - ermittlung position für aufsummierung (von 0 aufwärts)
 #Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Eintrag gelöscht und die Zeit wird aufsummiert.
-#Ansonsten wird nur die Lernzeit hinzugefügt.
-#Wenn die Daten der neuen liste zugeordnet werden, erhöht sich der index um 1.
+#Ansonsten wird nur die Lernzeit erstmalig hinzugefügt.
+#Orientierung an index von liste subject_list dann kopie der index in zeit_list
 
 def zeit():
     dateninhalt_3 = open_db("datenbank_lernsessions.json")
@@ -145,9 +146,9 @@ def zeit():
         for listindex in subject_list:
             if listen_elemente["Fach"] == listindex:
                 counter = counter + 1
-                if counter == 1:
+                if counter == 1: # merken an welcher position das fach befindet
                     index = counter_2
-            counter_2 = counter_2 + 1
+            counter_2 = counter_2 + 1 # forloop zum 2.mal durchgelaufen - ermittlung position für aufsummierung. von 0 aufwärts
 
         if counter == 2:
             subject_list = subject_list[:-1]
@@ -155,7 +156,7 @@ def zeit():
         else:
             time.append(listen_elemente["Lernzeit"])
 
-    index = 0
+    index = 0 #orientierung an index von liste subject_list dann kopie der index in zeit_list
     for listindex in subject_list:
         zeit_list.append({"Fach": subject_list[index], "Lernzeit": time[index]})
         index = index + 1
