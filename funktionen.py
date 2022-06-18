@@ -130,7 +130,7 @@ def worst():
 #counter_2 erhöht sich wenn forloop zum 2.mal durchgelaufen - ermittlung position für aufsummierung (von 0 aufwärts)
 #Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Eintrag gelöscht und die Zeit wird aufsummiert.
 #Ansonsten wird nur die Lernzeit erstmalig hinzugefügt.
-#Orientierung an index von liste subject_list dann kopie der index in zeit_list
+#Orientierung an Index von liste subject_list dann kopie der index in zeit_list
 
 def zeit():
     dateninhalt_3 = open_db("datenbank_lernsessions.json")
