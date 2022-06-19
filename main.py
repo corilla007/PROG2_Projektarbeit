@@ -29,6 +29,7 @@ def lernstoff_erfassen():
         return redirect(url_for('ranking'))
     return render_template("lernstoff_erfassen.html")
 
+
 #Weiteren Datensatz erfassen mit folgender app.route:
 @app.route("/lernstoff_erfassen_weitere", methods=["get", "post"])
 def lernstoff_weitere():
@@ -72,7 +73,6 @@ def lernsession_erfassen():
                                        control_session_antwort)
         return render_template("bestaetigung.html")
     return render_template("lernsession_erfassen.html")
-
 
 
 @app.route("/uebersicht")
