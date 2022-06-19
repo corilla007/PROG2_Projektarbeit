@@ -2,7 +2,7 @@
 <h2>1. Ausgangslage</h2>
 In der Lernphase folgen die Prüfungstermine oft dicht aufeinander. Zeitgleiches Lernen für 
 mehrere Fächer bleibt daher nicht aus, 
-wenn man sich gerne gründliche vorbereiten möchte. Diese Lernphase führt teilweise dazu, dass sich Studierende
+wenn man sich gerne gründliche vorbereiten möchte. Diese Lernphase führt teilweise dazu, dass sich Studierende und in direkterer Weise auch der Ersteller der Applikation,
 oft dem Lernstoff widmen, den sie ohnehin bereits beherrschen.
 
 
@@ -29,6 +29,7 @@ Folgende Daten müssen eingetragen werden:
 Fach (Text)
 Thema (Text)
 Wie gut beherrst du das Thema..Sei ehrlich! (Auswahl)
+Wird ein Feld leer gelassen, erscheint eine Fehlermeldung.
 
 Der Anwender kann danach den Datensatz abspeichern, oder weiteren Lernstoff erfassen.
 
@@ -37,7 +38,6 @@ Sobald der Lernstoff erfasst wurde, wird der User auf das Ranking weitergeleitet
 Darauf werden die Datensätze nach Beherrschungsgrad gegordnet. 
 Lernstoffe mit den Beherrschunggraden "Sehr schlecht" und "Schlecht" ranken zuoberst.
 
-Der Anwender kann danach den Datensatz abspeichern, oder weiteren Lernstoff erfassen.
 
 <h3>5.3 Lernsession erfassen</h3>
 Der User kann seine absolvierten Lernsession erfassen. Folgende Daten müssen eingegeben werden:
@@ -46,7 +46,7 @@ Welches Thema hast du gelernt?
 Wie lange hast du gelernt (in min)?
 Wie gut beherrst du den Lernstoff..Sei ehrlich! (Auswahl)
 Die Eingabe wird mit dem Klick auf den Button "Lernsession speichern" gespeichert.
-Wird ein Feld leer gelassen, erscheint eine Fehlermeldung
+Wird ein Feld leer gelassen, erscheint eine Fehlermeldung.
 Das Feld für die Minutenangaben benötigt eine Zahleneingabe. 
 Dafür wird ebenfalls eine Logik eingebaut, welche nur einen Wert der grösser als 1 ist akzeptiert. 
 Andernfalls erscheint eine Fehlermeldung.
@@ -55,8 +55,8 @@ Andernfalls erscheint eine Fehlermeldung.
 Die gespeicherten Lernstoffe und Lernsessions werden auf der Übersichtsseite anhand Analysen nochmals dargestellt.
 
 Folgende Gebiete können über den gesamten Container abgefragt werden: 
-Dieses Thema beherrschst du am besten (Analyse Lernsession). 
-Dieses Thema musst du dir nochmals ansehen (Analyse Lernsession). 
+Diese Themen beherrschst du am besten (Analyse Lernsession). 
+Diese Themen musst du dir nochmals ansehen (Analyse Lernsession). 
 So viel Zeit hast du pro Fach investiert (Analyse Lernsession). 
 Datenvisualisierung über Anzahl Beherrschungsgrade der Lernstoffe (Analyse Lernstoffe).
 
@@ -66,13 +66,14 @@ Dateneingabe: Lernstoff erfassen / Lernsession erfassen
 Datenspeicherung: Lernstoffe und Lernsessions werden in einer JSON-Datei gespeichert.
 Datenverarbeitung: Das Ranking wird mittels For-Schleife aus der Datenbank berechnet.
 Datenausgabe: Ranking wird aus der Datenverarbeitung ausgegeben. 
-Ausgabe des Fachs/Themas, mit höchster Lernzeit, 
-Ausgabe des Fachs/Themas, mit bester Beherrschung, 
-Ausgabe des Fachs/Themas, mit niedrigster Beherrschung
+Ausgabe der Fächer pro Lernzeit, 
+Ausgabe der Themen mit bester Beherrschung, 
+Ausgabe der Themen mit niedrigster Beherrschung.
 
 
 <h2>7. Ungelöste Probleme</h2>
-Bei der Seite "/lernstoff_erfassen" wäre ein Button für die weitere Lernstoff-Erfassung angedacht gewesen. 
+<h3>Button "Weiteren Lernstoff erfassen"</h3>
+Bei der Seite "/lernstoff_erfassen" wäre ein Button für die weitere Lernstoff-Erfassung angedacht. 
 Mit dem Klick auf diesen Button sollten die Formular-Antworten ebenfalls in die JSON-Datei abgespeichert werden und
 gleichzeitig sollte wieder das gleiche leere Formular gerendert werden. 
 Dazu wurde eine zweite App-Route erstellt, damit beim Klick auf den Button dieselbe Funktion "erfassen_speichern_lernstoff" aus Funktionen.py ausgeführt wird.
