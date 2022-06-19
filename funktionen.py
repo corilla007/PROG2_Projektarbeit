@@ -3,13 +3,13 @@ import plotly.express as px
 from plotly.offline import plot
 
 
-# Funktion zum Öffnen der Datenbank "datenbank_studium  ".
+# Funktion zum Öffnen einer beliebigen Datenbank.
 def open_db(datei):
     try:
         with open(datei, "r") as datenbank_datei:
-            # Inhalt der Datenbank wird als Dictonary gespeichert.
+            # Inhalte der jeweiligen Datenbank werden gelesen.
             dateiinhalte = json.load(datenbank_datei)
-    #Ausser File wird nicht gefunden
+    #Ausser File wird nicht gefunden, dann wird eine Fehlermeldung in der Console erscheinen.
     except FileNotFoundError:
         dateiinhalte = []
         print("no file found or file is corrupted")
@@ -126,11 +126,11 @@ def worst():
 #Die Lernzeit wird von der json-Datei "datenbank_lernsessions" herangezogen.
 #Fach wird in Liste subject_list abgespeichert. Wird Fach in subject_list gefunden (was mindestens 1x der fall ist), erhöht sich counter um 1.
 #Beim erstmaligen Aufruf der For-Schlaufe pro Fach wird der Counter 1 sein.
-#merken an welcher position das fach befindet. Index wird zum counter_2
-#counter_2 erhöht sich wenn forloop zum 2.mal durchgelaufen - ermittlung position für aufsummierung (von 0 aufwärts)
+#merken an welcher position sich das fach in der liste befindet. Index wird zum counter_2
+#counter_2 erhöht sich wenn forloop zum 2.mal durchgelaufen wird - ermittlung position für aufsummierung (von 0 aufwärts)
 #Wenn 2 identische Fächer enthalten sind, wird der urspüngliche Eintrag gelöscht und die Zeit wird aufsummiert.
 #Ansonsten wird nur die Lernzeit erstmalig hinzugefügt.
-#Orientierung an Index von liste subject_list dann kopie der index in zeit_list
+#Orientierung an Index von liste subject_list dann kopie der indexe in zeit_list
 
 def zeit():
     dateninhalt_3 = open_db("datenbank_lernsessions.json")
@@ -156,7 +156,7 @@ def zeit():
         else:
             time.append(listen_elemente["Lernzeit"])
 
-    index = 0 #orientierung an index von liste subject_list dann kopie der index in zeit_list
+    index = 0 #orientierung an index von liste subject_list dann kopie der indexe in zeit_list
     for listindex in subject_list:
         zeit_list.append({"Fach": subject_list[index], "Lernzeit": time[index]})
         index = index + 1
